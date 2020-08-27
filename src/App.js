@@ -1,8 +1,10 @@
 import React from 'react';
+import VideoScreen from './pages/VideoScreen';
+
 
 function App() {
   return (
-    <div>Hello</div>
+    <VideoScreen />
   );
 }
 

@@ -1,5 +1,6 @@
-import {dadinhos} from 'pyoutiput';
-import {nomeMovie} from 'pyoutiput';
+import {dadinhos, nomeMovie} from './pyoutiput'
+
+import {getPronuncia} from './scripts/pronunciation'
 
 export const dados = (() => {
     let retornar = {

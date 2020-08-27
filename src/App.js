@@ -7,11 +7,12 @@ import {dados} from './assets/data/tratarPyOutput';
 
 
 function App() {
+  // console.log(dados)
   return (
     <>
       <GlobalStyles />
       
-      <VideoScreen dados={dados} />
+      <VideoScreen qualTextoMostrar="pt-en" dados={dados} />
     </>
   );
 }

@@ -8,7 +8,7 @@ const isVogal = (letra) => {
     }
 }
 
-var getPronuncia = (frase) => {
+export const getPronuncia = (frase) => {
     const subtitle = frase
     console.log('\n' +frase)
     const palavrasDeusas = ['it', "can't", 'why', 'your']
@@ -94,7 +94,7 @@ var getPronuncia = (frase) => {
             }
         }catch {}
     }
-    patternsFunctions = [
+    const patternsFunctions = [
         changer,
         ing,
         ke,

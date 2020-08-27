@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 import VideoPlayer from '../../components/VideoPlayer';
 import SubtitlePlayer from '../../components/SubtitlePlayer';
@@ -6,15 +6,17 @@ import SubtitlePlayer from '../../components/SubtitlePlayer';
 
 import { Container, Top, Button, Main } from './styles-video-screen.js';
 
-const VideoScreen = ({ qualTextoMostrar, nomeMovie, dadinhos }) => {
+const VideoScreen = ({ qualTextoMostrar, dados}) => {
+    const [indexPlay, setIndexPlay] = useState(0)
+
     return (
        <Container>
            <Main>
                 <Top>
-                    <VideoPlayer dadinhos={dadinhos} />
+                    <VideoPlayer dados={dados} state={[indexPlay, setIndexPlay]} />
                 </Top>
                 <Button>
-                    <SubtitlePlayer qualTextoMostrar = {qualTextoMostrar}/>
+                    <SubtitlePlayer qualTextoMostrar = {qualTextoMostrar} dados={dados} state={[indexPlay, setIndexPlay]} />
                 </Button>
            </Main>
        </Container>

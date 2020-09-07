@@ -1,6 +1,7 @@
 import {dadinhos, nomeMovie} from './pyoutiput'
 
 import {getPronuncia} from './scripts/pronunciation'
+import {bestWords} from '../../assets/data/bestWords';
 
 export const dados = (() => {
     let retornar = {
@@ -18,8 +19,22 @@ export const dados = (() => {
         const pronuncia = getPronuncia(en)
         const exemplo = x[3]
 
+
+        // let marcar_bests_words = lista => {
+        //     lista = lista.join('**')
+        //     for (let ww of bestWords) {
+        //         let re = new RegExp("\\b(" + ww + ")\\b", "ig");
+        //         lista = lista.replace(re, '<span>$1</span>')
+        //     }
+        //     return lista.split("**")
+        // }
+        
+
+
         retornar.urlVideos.push(link)
         retornar.pronuncia.push(pronuncia)
+        // retornar.mySubtitle = marcar_bests_words(en)
+        
         retornar.mySubtitle.push(en)
         retornar.myTranslation.push(pt)
         retornar.exemplo.push(exemplo)
@@ -28,3 +43,17 @@ export const dados = (() => {
     }
     return retornar
 })()
+
+
+
+// (() => {
+//     let marcar_bests_words = lista => {
+//         lista = lista.join('**')
+//         for (let ww of bestWords) {
+//             let re = new RegExp("\\b(" + ww + ")\\b", "ig");
+//             lista = lista.replace(re, '<span>$1</span>')
+//         }
+//         return lista.split("**")
+//     }
+//     dados.mySubtitle = marcar_bests_words(dados.mySubtitle)
+// })()

@@ -3,13 +3,13 @@ import styled from 'styled-components';
 export const Container = styled.div`
     width: 100%;
     height: 100%;
-    color: black;
+    /* color: black; */
     position: relative;
 
 
     > .paiLegenda {
         position: absolute;
-        background: blue;
+        /* background: blue; */
         margin: auto;
         top: 0;
         bottom: 0;

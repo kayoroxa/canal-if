@@ -4,7 +4,7 @@ import { Container } from './styles-subtitle-player';
 
 const SubtitlePlayer = ({qualTextoMostrar, dados, state }) => {
     const [indexPlay, setIndexPlay] = state
-
+    console.log("aquiii",dados)
     return (
        <Container>
            <div className={"paiLegenda " + qualTextoMostrar}>

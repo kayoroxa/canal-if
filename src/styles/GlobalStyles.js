@@ -11,6 +11,7 @@ export default createGlobalStyle`
         box-sizing: border-box;
         list-style: none;
         font-size: 1.3rem;
+        color: white;
     }
     :root {
         --background: #111;

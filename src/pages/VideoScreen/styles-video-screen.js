@@ -28,7 +28,7 @@ export const Top = styled.div`
 `;
 
 export const Button = styled.div`
-    background-color: red;
+    /* background-color: red; */
     width: 90%;
     height: 30%;
 `;

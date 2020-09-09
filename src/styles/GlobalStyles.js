@@ -2,7 +2,8 @@ import { createGlobalStyle } from 'styled-components'
 
 export default createGlobalStyle`
     html {
-        background-color: var(--background)
+        background-color: var(--background);
+        overflow-x: hidden;
     }
     * {
         font-family: 'Roboto', sans-serif;
@@ -15,5 +16,11 @@ export default createGlobalStyle`
     }
     :root {
         --background: #111;
+        --black: #111;
+        --blue: #05A2AC;
+    }
+
+    .bold {
+        font-family: 'Assistant', sans-serif;
     }
 `

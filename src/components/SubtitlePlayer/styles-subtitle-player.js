@@ -31,25 +31,25 @@ export const Container = styled.div`
 
     > .pt-en {
         .en {
-            background: green;
+            /* background: green; */
         }
     }
 
     > .en {
         .en {
-            background: pink;
+            /* background: pink; */
         }
     }
 
     > .pronunciaAndExemplo {
         .pronuncia {
-            background: pink;
+            /* background: pink; */
         }
         .en {
-            background: pink;
+            /* background: pink; */
         }
         .pt {
-            background: pink;
+            /* background: pink; */
         }
     }
 

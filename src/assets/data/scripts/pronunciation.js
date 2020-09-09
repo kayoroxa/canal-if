@@ -10,7 +10,6 @@ const isVogal = (letra) => {
 
 export const getPronuncia = (frase) => {
     const subtitle = frase
-    console.log('\n' +frase)
     const palavrasDeusas = ['it', "can't", 'why', 'your']
     frase = frase.toLowerCase().split(" ")
     function changer (palavra, index, proximaPalavra) {
@@ -123,7 +122,6 @@ export const getPronuncia = (frase) => {
         }
     }
     
-    console.log(pronuncia)
     return pronuncia 
 }
 

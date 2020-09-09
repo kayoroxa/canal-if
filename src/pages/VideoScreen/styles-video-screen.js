@@ -23,8 +23,19 @@ export const Main = styled.div`
 `;
 
 export const Top = styled.div`
-    width: 40%;
-    height: 60%;
+    width: 50%;
+    height: 80%;
+    position: relative;
+
+    .logo {
+        position: absolute;
+        font-size: 30px;
+        opacity: 0.2;
+        right: 30px;
+        bottom: 20px;
+        -webkit-text-stroke-width: 1px; 
+        -webkit-text-stroke-color: black; 
+    }
 `;
 
 export const Button = styled.div`

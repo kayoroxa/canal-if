@@ -22,9 +22,9 @@ function App() {
   const [qualTextoMostrar, setQualTextoMostrar] = useState(cronograma[0])
   // document.addEventListener('keydown', () => console.log("key-----------"));
 
-  useEffect(() => {
-    pageInicial ? navigate("/pronunciation-screen") : navigate("/")
-  }, [pageInicial])
+  // useEffect(() => {
+  //   pageInicial ? navigate("/pronunciation-screen") : navigate("/")
+  // }, [pageInicial])
 
   
   return (

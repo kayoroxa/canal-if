@@ -1,19 +1,19 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 import { Container } from './styles-pronunciation-screen';
 
 const PronunciationScreen = ({frase}) => {
-    const compTemp = () => {
-        return (
-            <p>
-                than<span>k you</span> <span>com<span>e</span> on</span>
-            </p>
-        )
-    }
+    // const string = "THANK YOU COME ON"
+    const [step, setStep] = useState(0)
+    const componentString = "than<span order=1>k you</span> <span order=2>com<span order=3>e</span> on</span>"
+
+
+    document.onkeydown = () => setStep((prev) => prev +1)
+
     return (
-        <Container>
+        <Container indexView={step}>
             <div className="main">
-                {compTemp()}
+                <p dangerouslySetInnerHTML={{ __html: componentString }} />
             </div>
         </Container>
     );

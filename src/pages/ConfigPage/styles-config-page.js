@@ -11,7 +11,9 @@ export const ContainerConfigPage = styled.div`
       height: 5%;
       /* background: pink; */
       margin-top: 4%;
-      text-align: right;
+      /* text-align: right; */
+      display: flex; justify-content: space-between;
+
    }
    .not-header {
       width: 95%;

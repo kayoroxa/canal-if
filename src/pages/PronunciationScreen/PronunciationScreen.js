@@ -1,11 +1,12 @@
 import React, {useState} from 'react';
-
+import {getPronuncia} from '../../assets/data/scripts/pronunciation2.0';
 import { Container } from './styles-pronunciation-screen';
 
 const PronunciationScreen = ({frase}) => {
-    // const string = "THANK YOU COME ON"
     const [step, setStep] = useState(0)
-    const componentString = "than<span order=1>k you</span> <span order=2>com<span order=3>e</span> on</span>"
+    // const componentString = getPronuncia("There is so much to understand.")
+    const componentString = getPronuncia("gave him all the money he had")
+    // const componentString = "take<span order=1>k you</span> <span order=2>com<span order=3>e</span> on</span>"
 
 
     document.onkeydown = () => setStep((prev) => prev +1)

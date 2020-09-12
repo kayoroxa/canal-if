@@ -23,4 +23,6 @@ export default createGlobalStyle`
     .bold {
         font-family: 'Assistant', sans-serif;
     }
+
+    svg:hover {cursor: pointer; fill: var(--blue)}
 `

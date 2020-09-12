@@ -1,10 +1,14 @@
 import React, {useState, useEffect} from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import GlobalStyles from './styles/GlobalStyles';
+
 import VideoScreen from './pages/VideoScreen';
 import AudioScreen from './pages/AudioScreen';
 import DefinitionScreen from './pages/DefinitionScreen';
 import PronunciationScreen from './pages/PronunciationScreen';
+import ConfigPage from './pages/ConfigPage';
+
+import DadosProvider from './context/Dados';
 
 
 import {dados} from './assets/data/tratarPyOutput';
@@ -28,16 +32,17 @@ function App() {
 
   
   return (
-      <>
+      <DadosProvider>
         <GlobalStyles />
         <Routes>
-          <Route path="/translate-screen" element={<DefinitionScreen frase = {"Man, i like you whats your name"} />} />
-          <Route path="/pronunciation-screen" element={<PronunciationScreen frase = {"Man, i like you whats your name"} />} />
-          <Route path="/videos-screen" element={<VideoScreen qualTextoMostrar={qualTextoMostrar} dados={dados} />} />
-          <Route path="/audio-screen" element={<AudioScreen />} />
+          <Route path="/config" element={<ConfigPage />} />
+          <Route path="/translate" element={<DefinitionScreen frase = {"Man, i like you whats your name"} />} />
+          <Route path="/pronunciation" element={<PronunciationScreen frase = {"Man, i like you whats your name"} />} />
+          <Route path="/videos" element={<VideoScreen qualTextoMostrar={qualTextoMostrar} dados={dados} />} />
+          <Route path="/audio" element={<AudioScreen />} />
           <Route path="/" element={<div onClick={() => setPageInicial(true)}>Press any Key</div>} />
         </Routes>
-      </>
+      </DadosProvider>
   );
 }
 

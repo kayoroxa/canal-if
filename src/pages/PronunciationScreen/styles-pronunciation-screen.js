@@ -29,43 +29,58 @@ export const Container = styled.div`
 
 
         > * {
-            >span {position: relative;}
+            >span {position: relative; line-height: 200%;}
 
-            ${({indexView}) => selectors(indexView, "span%::after")}{
+            ${({indexView}) => selectors(indexView, "span.change > span")} {
+                /* CHANGE inicializar*/
+                position: absolute;
+                top: -50%;
+                left: 0; right: 0; margin: auto;
+                opacity: 0;
+                font-size: 4vw;
+                line-height: 100%;
+            }${({indexView}) => selectors(indexView, "span.change% > span")} {/*change */opacity: 1;}
+            
+
+            ${({indexView}) => selectors(indexView, "span:not(.hidden):not(.change)%::after")}{
+                /* juntar */
                 content: "";
                 display: block;
                 position: absolute;
                 margin: auto;
                 left: 0;
                 right: 0;
-                width: 98%;
+                width: 100%;
+                height: 100%;
                 bottom: 6%;
-                height: 4px;
-                background: currentColor;
+                background: var(--blue);
+                z-index: -1;
             }
-            ${({indexView}) => selectors(indexView, ">span%:nth-child(1), >span%:nth-child(1) *")} {color: red;}
+            /* ${({indexView}) => selectors(indexView, ">span%:nth-child(1), >span%:nth-child(1):not(.hidden) *")} {color: red;} */
 
-            ${({indexView}) => selectors(indexView, ">span%:nth-child(2), >span%:nth-child(2) *")} {color: var(--blue);}
+            /* ${({indexView}) => selectors(indexView, ">span%:nth-child(2), >span%:nth-child(2):not(.hidden) *")} {color: var(--blue);} */
         }
-        ${({indexView}) => selectors(indexView, "> * >span > span%")}{
+
+
+        ${({indexView}) => selectors(indexView, ".hidden%, .change%")}{
+            /* ocultar */
             position: relative;
-            color: white !important;
-            opacity: 0.3;
+            color: gray !important;
         }
-
-        ${({indexView}) => selectors(indexView, "> * >span > span%::after")} {
+        ${({indexView}) => selectors(indexView, ".hidden%::after, .change%::after")} {
+            /* ocultar after */
             content: "";
             display: block;
             position: absolute;
             margin: auto;
             left: 0;
             right: 0;
-            width: 5px;
+            width: 8px;
             height: 110%;
             bottom: 0.0001%;
             background: currentColor;
             opacity: 1;
-            transform: rotate(15deg);
+            transform: rotate(20deg);
         }
     }
 `;

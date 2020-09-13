@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import { useNavigate } from 'react-router-dom';
 import ReactPlayer from 'react-player';
 import { MdQueuePlayNext, MdPlayArrow, MdNavigateBefore, MdNavigateNext, MdSkipPrevious, MdSkipNext  } from 'react-icons/md';
 import EditInPlace from '../../components/EditInPlace';
@@ -8,9 +9,18 @@ import { useDados } from '../../context/Dados';
 
 
 const ConfigPage = () => {
-    const {dados, changerDados, indexCardConfig, setIndexCardConfig} = useDados()
+    const {
+        dados,
+        changerDados,
+        indexCardConfig,
+        setIndexCardConfig,
+        indexPage,
+        proximaPage,
+    } = useDados()
+
     const lenDados = Object.keys(dados).length
     const [showVideo, setShowVideo] = useState({frase: false, exemplo: false})
+    const navigate = useNavigate()
     const proximo = () => {setIndexCardConfig((prev) => prev +1 < lenDados ? prev +1 : prev)}
     const anterior = () => {setIndexCardConfig((prev) => prev -1 < 0 ? prev : prev -1)}
     
@@ -47,7 +57,7 @@ const ConfigPage = () => {
             {fraseVideo}
             {exemploVideo}
             <header>
-                <MdQueuePlayNext size={50}/>
+                <MdQueuePlayNext size={50} onClick={() => proximaPage()}/>
                 <div>{indexCardConfig +1}/{lenDados}</div>
                 <div>{Math.round((indexCardConfig +1) * 100 / lenDados)}% Complete</div>
             </header>

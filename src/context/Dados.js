@@ -1,31 +1,44 @@
-import React, { createContext, useState, useContext } from 'react';
-
+import {getPronuncia} from '../assets/data/scripts/pronunciation2.0'
+import React, { createContext, useState, useContext, useEffect } from 'react';
+import {dadinhos, nomeMovie} from '../assets/data/pyoutiput'
+import { useNavigate } from 'react-router-dom';
 const DadosContext = createContext();
 
 export default function DadosProvider({ children }) {
+    const navigate = useNavigate()
+    
+    const cronograma = [
+        "translate",
+        "config",
+        "videos",
+        "pronunciation",
+    ]
+
+    const [indexPlay, setIndexPlay] = useState(0)
+    const proximoIndexPlay = () => setIndexPlay((prev) => prev +1)
+    const [indexPage, setIndexPage] = useState(0)
+    const proximaPage = () => setIndexPage((prev) => prev +1)
+
+
+    useEffect(() => {
+        navigate("/" + cronograma[indexPage])
+        setIndexPlay(0)
+    }, [indexPage])
+
     const [indexCardConfig, setIndexCardConfig] = useState(0)
-    const [dados, setDados] = useState([
+
+    const [dados, setDados] = useState(dadinhos.map((card, index) => (
         {
-            frase : "Hey, rise and shine, everybody.",
-            fraseTranslate : "Ei, levante-se e brilhe, pessoal.",
-            urlFrase : "https://y.yarn.co/b0d4a82a-8ee6-420c-8fa8-66b471a39cae.mp4",
-            wordTranslate : "i can live in my house",
-            pronuncia : "asfasf",
-            exemploFrase : "Rise and shine, detectives, rise and shine.",
-            exemploTranslate : "Levante-se e brilhe, detetives, levante-se e brilhe.",
-            urlExemplo : "https://y.yarn.co/5cf2ef1b-042e-4c7f-9301-aa096de1975a.mp4",
-        },
-        {
-            frase : "Where is everybody?",
-            fraseTranslate : "Onde está todo mundo?",
-            urlFrase : "https://y.yarn.co/e27b6803-3dae-4b65-a836-94a02ef19b65.mp4",
-            wordTranslate : "i can live in my house",
-            pronuncia : "asfasf",
-            exemploFrase : "Where is everybody?",
-            exemploTranslate : "Onde está todo mundo?",
-            urlExemplo : "https://y.yarn.co/a30fb031-881a-4885-b116-f3944d46d5fb.mp4",
-        },
-    ])
+            urlFrase : card[0],
+            frase : card[1],
+            fraseTranslate : card[2],
+            wordTranslate : "*",
+            pronuncia : getPronuncia(card[1]),
+            exemploFrase : card[3].subtitle,
+            exemploTranslate : card[3].translation,
+            urlExemplo : card[3].url,
+        }
+    )))
 
     const changerDados = (() => {
         const subChanger = (name, index) => value => setDados((prev) => ({
@@ -48,7 +61,12 @@ export default function DadosProvider({ children }) {
                 dados,
                 changerDados,
                 indexCardConfig,
-                setIndexCardConfig
+                setIndexCardConfig,
+                indexPlay,
+                setIndexPlay,
+                indexPage,
+                proximaPage,
+                proximoIndexPlay,
             }}
        >
             {children}
@@ -63,12 +81,22 @@ export function useDados() {
         dados,
         changerDados,
         indexCardConfig,
-        setIndexCardConfig
+        setIndexCardConfig,
+        indexPlay,
+        setIndexPlay,
+        indexPage,
+        proximaPage,
+        proximoIndexPlay,
     } = context;
     return {
         dados,
         changerDados,
         indexCardConfig,
-        setIndexCardConfig
+        setIndexCardConfig,
+        indexPlay,
+        setIndexPlay,
+        indexPage,
+        proximaPage,
+        proximoIndexPlay,
     };
 }

@@ -1,25 +1,26 @@
 import React, {useEffect, useRef} from 'react';
 import ReactPlayer from 'react-player';
-
+import { useDados } from '../../context/Dados';
 
 import { Container } from './styles-video-player';
 import { useState } from 'react';
 
-const VideoPlayer = ({ dados, indexPlay, setIndexPlay, setIsPlaying }) => {
-    
-    
-    const urls = dados.urlVideos
 
+const VideoPlayer = ({  indexPlay, setIndexPlay, setIsPlaying }) => {
+    
+    const {dados} = useDados()
+    // const urls = dados.urlVideos
+    // Object.keys(dados).map((card, index) => console.log(card))
     const mudar = (ultimoIndexTocado) => {
         setIndexPlay(ultimoIndexTocado + 1)
     }
     
     return (
         <Container>
-            {urls.map((url, index) => (
+            {Object.values(dados).map((card, index) => (
                     <ReactPlayer 
                         key={index}
-                        url={url}
+                        url={card.urlFrase}
                         config={{
                             file: { 
                                 attributes: { 

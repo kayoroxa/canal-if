@@ -19,7 +19,6 @@ export const dados = (() => {
         const pronuncia = getPronuncia(en)
         const exemplo = x[3]
 
-
         // let marcar_bests_words = lista => {
         //     lista = lista.join('**')
         //     for (let ww of bestWords) {
@@ -29,8 +28,6 @@ export const dados = (() => {
         //     return lista.split("**")
         // }
         
-
-
         retornar.urlVideos.push(link)
         retornar.pronuncia.push(pronuncia)
         // retornar.mySubtitle = marcar_bests_words(en)

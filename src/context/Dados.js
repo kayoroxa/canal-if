@@ -8,8 +8,8 @@ export default function DadosProvider({ children }) {
     const navigate = useNavigate()
     
     const cronograma = [
-        "translate",
         "config",
+        "translate",
         "videos",
         "pronunciation",
     ]
@@ -32,7 +32,7 @@ export default function DadosProvider({ children }) {
             urlFrase : card[0],
             frase : card[1],
             fraseTranslate : card[2],
-            wordTranslate : "*",
+            wordTranslate : "man : homem / cara, i like you : eu gostoooo de você, what's / what is : qual é, your name : seu nome",
             pronuncia : getPronuncia(card[1]),
             exemploFrase : card[3].subtitle,
             exemploTranslate : card[3].translation,
@@ -42,7 +42,7 @@ export default function DadosProvider({ children }) {
 
     const changerDados = (() => {
         const subChanger = (name, index) => value => setDados((prev) => ({
-            ...prev, [index] : {...prev[index], [name]: [value]} 
+            ...prev, [index] : {...prev[index], [name]: value} 
         }))
         const retornar = Object.keys(dados).map((_) => ({}))
 

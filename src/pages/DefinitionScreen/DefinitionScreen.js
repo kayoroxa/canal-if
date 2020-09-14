@@ -6,7 +6,7 @@ const DefinitionScreen = () => {
     const [indexDefinition, setIndexDefinition] = useState(0)
     const { indexPlay, proximoIndexPlay, dados, proximaPage } = useDados()
 
-    const temMaisCard = indexPlay < dados.length -1 ? true : false
+    const temMaisCard = indexPlay < Object.keys(dados).length -1 ? true : false
     const dividir = (() => {
         const lista = []
         if (dados[indexPlay].frase.length > 22) {
@@ -22,28 +22,24 @@ const DefinitionScreen = () => {
         return false
     })()
 
-    const definition = { //fazer
-        "man": "homem / cara",
-        "i like you": "eu gosto de você",
-        "what's / what is" : "qual é",
-        "your name" : "seu nome",
-    }
-
     const teclaCLicada = () => {
-        setIndexDefinition((prev) => prev < Object.keys(definition).length -1 ? (
+        setIndexDefinition((prev) => prev < dados[indexPlay].wordTranslate.split(",").length  ? (
             prev + 1
         ) : (
             0
         ))
     }
-
+    
     useEffect(() => {
-        if (indexDefinition === 0  && temMaisCard) proximoIndexPlay()
-        else if (indexDefinition === 0  && !temMaisCard) proximaPage()
+        document.onkeydown = teclaCLicada
+        
+        if (indexDefinition === 0  && temMaisCard === true) proximoIndexPlay()
+        if (indexDefinition === dados[indexPlay].wordTranslate.split(",").length  && temMaisCard === false) proximaPage()
+
+        return () => document.onkeydown = null
     }, [indexDefinition])
 
-    document.onkeydown = teclaCLicada
-
+    
     //////////////////////////////////////////////////////////////////
     return (
        <Container>
@@ -51,9 +47,9 @@ const DefinitionScreen = () => {
                 {dividir ? dividir.map((element, i) => <React.Fragment key={i}>{element}</React.Fragment>) : <p>{dados[indexPlay].frase}</p>}
            </div>
            <div className="definition">
-                {Object.keys(definition).map((key, index) => (
-                    <p key={index} style={index <= indexDefinition ? null : {opacity: 0}}>
-                        <span className="bold">{key}</span> = {definition[key]}
+                {dados[0].wordTranslate.split(",").map((card, index) => (
+                    <p key={index} style={index < indexDefinition ? null : {opacity: 0}}>
+                        <span className="bold">{card.split(":")[0].trim()}</span> = {card.split(":")[1].trim()}
                     </p>
                 ))}
            </div>

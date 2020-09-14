@@ -1,5 +1,7 @@
-var obj = {"1":5,"2":7,"3":0,"4":0,"5":0,"6":0,"7":0,"8":0,"9":0,"10":0,"11":0,"12":0};
-
-var res = Object.values(obj);
-
-console.log(res);
+const definitionString = "kombi : homem / cara, i like you : eu gosto de você, what's / what is : qual é, your name : seu nom"
+let definition = {}
+for (let filho of definitionString.split(",")) {
+    filho = filho.split(":")
+    definition[filho[0].trim()] = filho[1].trim()
+}
+console.log(definition)

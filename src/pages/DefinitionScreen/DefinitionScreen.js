@@ -35,14 +35,17 @@ const DefinitionScreen = () => {
         console.log(indexPlay, "index")
         document.onkeydown = teclaCLicada
 
-        if (indexDefinition === dados[indexPlay].wordTranslate.split(",").length  && temMaisCard === true) setMostrarProximoCard(true)
+        if (indexDefinition === dados[indexPlay].wordTranslate.split(",").length) setMostrarProximoCard(true)
 
-        if (mostrarProximoCard) {
+        else if (mostrarProximoCard && temMaisCard === true) {
             proximoIndexPlay()
             setMostrarProximoCard(false)
         }
 
-        else if (indexDefinition === dados[indexPlay].wordTranslate.split(",").length  && temMaisCard === false) proximaPage()
+        else if (mostrarProximoCard  && temMaisCard === false) {
+            proximaPage()
+            setMostrarProximoCard(false)
+        }
 
         return () => document.onkeydown = null
     }, [indexDefinition])

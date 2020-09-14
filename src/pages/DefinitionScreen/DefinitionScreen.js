@@ -5,6 +5,7 @@ import { Container } from './styles-definition-screen';
 const DefinitionScreen = () => {
     const [indexDefinition, setIndexDefinition] = useState(0)
     const { indexPlay, proximoIndexPlay, dados, proximaPage } = useDados()
+    const [mostrarProximoCard, setMostrarProximoCard] = useState(false)
 
     const temMaisCard = indexPlay < Object.keys(dados).length -1 ? true : false
     const dividir = (() => {
@@ -31,10 +32,17 @@ const DefinitionScreen = () => {
     }
     
     useEffect(() => {
+        console.log(indexPlay, "index")
         document.onkeydown = teclaCLicada
-        
-        if (indexDefinition === 0  && temMaisCard === true) proximoIndexPlay()
-        if (indexDefinition === dados[indexPlay].wordTranslate.split(",").length  && temMaisCard === false) proximaPage()
+
+        if (indexDefinition === dados[indexPlay].wordTranslate.split(",").length  && temMaisCard === true) setMostrarProximoCard(true)
+
+        if (mostrarProximoCard) {
+            proximoIndexPlay()
+            setMostrarProximoCard(false)
+        }
+
+        else if (indexDefinition === dados[indexPlay].wordTranslate.split(",").length  && temMaisCard === false) proximaPage()
 
         return () => document.onkeydown = null
     }, [indexDefinition])
@@ -47,7 +55,7 @@ const DefinitionScreen = () => {
                 {dividir ? dividir.map((element, i) => <React.Fragment key={i}>{element}</React.Fragment>) : <p>{dados[indexPlay].frase}</p>}
            </div>
            <div className="definition">
-                {dados[0].wordTranslate.split(",").map((card, index) => (
+                {dados[indexPlay].wordTranslate.split(",").map((card, index) => (
                     <p key={index} style={index < indexDefinition ? null : {opacity: 0}}>
                         <span className="bold">{card.split(":")[0].trim()}</span> = {card.split(":")[1].trim()}
                     </p>

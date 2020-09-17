@@ -11,8 +11,12 @@ const VideoScreen = ({ qualTextoMostrar, reproduzirTodos }) => {
     const { indexPlay, setIndexPlay, proximaPage, dados} = useDados()
     const [isPlaying, setIsPlaying] = useState(false)
 
+    const chamou = () => {
+        proximaPage()
+        console.log('chamou')
+    }
     useEffect(() => {
-        if (indexPlay > dados.length -1) proximaPage()
+        if (indexPlay > dados.length -1) chamou()
     }, [indexPlay])
 
     return (

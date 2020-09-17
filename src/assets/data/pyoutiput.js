@@ -1,59 +1,79 @@
 export const dadinhos = [
-    ['https://y.yarn.co/47725156-0469-472b-8fbf-e7aa29aa3c9d.mp4', 'I missed him a lot today.', 'Eu senti muito a falta dele hoje.', {
-        'url': 'https://y.yarn.co/36913e50-038d-422f-9b8a-ccb2e4d85341.mp4',
-        'subtitle': 'I missed you a lot. ',
-        'translation': 'Eu senti muito a sua falta.'
+    ['https://y.yarn.co/72eec69d-4f8d-4720-884e-0d861a7a309f.mp4', 'We were some team, huh?', 'Éramos uma equipe, hein?', {
+        'url': 'https://y.yarn.co/b061aa20-1d8d-4a75-a610-9b2fb9f474b8.mp4',
+        'subtitle': 'Huh, team? Huh? ',
+        'translation': 'Huh, time? Hã?'
     }],
-    ['https://y.yarn.co/57f7cb25-cf89-49af-ad23-72cdb40c9d9e.mp4', 'I know.', 'Eu sei.', {
-        'url': 'https://y.yarn.co/45748391-d30b-4f84-a47f-0b6999c10257.mp4',
-        'subtitle': 'I know, I know, I know, I know, I know ',
-        'translation': 'Eu sei, eu sei, eu sei, eu sei, eu sei'
-    }],
-    // ['https://y.yarn.co/a31313b2-c595-4b34-9628-7b3dac102e0f.mp4', 'I miss him too.', 'Sinto a falta dele também.', {
-    //     'url': 'https://y.yarn.co/71d4aff2-a470-4a3d-b0d8-6d5680fb8487.mp4',
-    //     'subtitle': 'I miss him, too. ',
-    //     'translation': 'Sinto a falta dele também.'
+    // ['https://y.yarn.co/358b2d41-822e-4b43-9f8f-770604214e01.mp4', "Were? Come on. We're still a team.", 'Estavam? Vamos. Ainda somos uma equipe.', {
+    //     'url': 'https://y.yarn.co/05e34795-2455-4ed1-b6f1-ca3af4eb6033.mp4',
+    //     'subtitle': "Come on, we're a team. ",
+    //     'translation': 'Vamos, somos uma equipe.'
     // }],
-    // ['https://y.yarn.co/d9b0f6e6-570b-46d3-ab5e-15b4ca20cd84.mp4', 'But he was there.', 'Mas ele estava lá.', {
-    //     'url': 'https://y.yarn.co/8d49f21a-74f6-4b5a-9f84-a43ad8d54002.mp4',
-    //     'subtitle': 'But he was there! ',
-    //     'translation': 'Mas ele estava lá!'
+    // ['https://y.yarn.co/82a2b4e0-bd2b-4051-93a4-e2827d78a429.mp4', 'I am sorry I set you up.', 'Lamento ter armado para você.', {
+    //     'url': 'https://y.yarn.co/ae5a5fb1-acc6-4b26-a7b9-92ed05e4ccd9.mp4',
+    //     'subtitle': 'Okay I am sorry. ',
+    //     'translation': 'Ok, sinto muito.'
     // }],
-    // ['https://y.yarn.co/3858e0bc-0940-4b74-9982-2fc2cea448d3.mp4', "I can't help thinking about the last thing I said to him.", 'Não consigo deixar de pensar na última coisa que disse a ele.', {
-    //     'url': 'https://y.yarn.co/4171c6c7-5ea3-473d-b99e-1c55b33225c8.mp4',
-    //     'subtitle': "I can't remember the last thing I said to him. ",
-    //     'translation': 'Não consigo me lembrar da última coisa que disse a ele.'
+    // ['https://y.yarn.co/da225db9-29f8-497e-8b9e-b06d493b6fba.mp4', "Ah. You know me. I'm too lazy to hold a grudge.", 'Ah. Você me conhece. Estou com preguiça de guardar rancor.', {
+    //     'url': 'https://y.yarn.co/ce9ba7ed-f2fd-435c-a239-cf6651d660c5.mp4',
+    //     'subtitle': "I'm not one to hold a grudge. ",
+    //     'translation': 'Não sou de guardar rancor.'
     // }],
-    // ['https://y.yarn.co/415faf19-67d5-443f-951f-a706c8a6d114.mp4', 'He tried to tell me something important, and I threw it in his face.', 'Ele tentou me dizer algo importante e eu joguei na cara dele.', {
-    //     'url': 'https://y.yarn.co/4891b4cb-80a2-4ba5-b07c-509f5f0efe44.mp4',
-    //     'subtitle': 'I almost threw it in his face. ',
-    //     'translation': 'Quase joguei na cara dele.'
+    // ['https://y.yarn.co/3e4193a5-4dc9-479e-8c62-0d434a92e565.mp4', 'Hey. Knock it off. squirt.', 'Ei. Pare com isso. esguicho.', {
+    //     'url': 'https://y.yarn.co/f029866d-b2f9-458e-be42-39a674f403e1.mp4',
+    //     'subtitle': 'Hey, hey! Knock it off, knock it off, hey! ',
+    //     'translation': 'Ei ei! Pare com isso, pare com isso, hey!'
     // }],
-    // ['https://y.yarn.co/2ce3789e-0bd4-450b-ac3b-def105362413.mp4', 'You loved him...', 'Você o amava ...', {
-    //     'url': 'https://y.yarn.co/2ce3789e-0bd4-450b-ac3b-def105362413.mp4',
-    //     'subtitle': 'You loved him... ',
-    //     'translation': 'Você o amava ...'
+    // ['https://y.yarn.co/7d0c6424-7e3b-4c2c-8cce-f2ddf81dfe12.mp4', 'You have to be strong.', 'Você tem que ser forte.', {
+    //     'url': 'https://y.yarn.co/83e05af2-2c91-4b10-962f-78068ac6b30e.mp4',
+    //     'subtitle': 'You have to be strong. ',
+    //     'translation': 'Você tem que ser forte.'
     // }],
-    // ['https://y.yarn.co/57df4525-ae5c-446c-b197-5c253f700e52.mp4', 'and he loved you.', 'e ele te amou.', {
-    //     'url': 'https://y.yarn.co/4da6f704-8bf1-41e1-b538-74e41754fb36.mp4',
-    //     'subtitle': 'and he loved you, Declan. ',
-    //     'translation': 'e ele te amava, Declan.'
+    // ['https://y.yarn.co/d876fc5f-01a0-430f-9eb3-b9be31213820.mp4', 'You have to take care of Manfred and Sid.', 'Você tem que cuidar de Manfred e Sid.', {
+    //     'url': 'https://y.yarn.co/006ad54f-a8f5-41a1-aa36-778555a45ebd.mp4',
+    //     'subtitle': 'Just have to take care of yourself. Take care of myself? ',
+    //     'translation': 'Só tem que se cuidar. Cuidar de mim mesmo?'
     // }],
-    // ['https://y.yarn.co/231f9802-5104-45e4-abe7-35e29a4cb2fe.mp4', "He never doubted the man you'd grow into.", 'Ele nunca duvidou do homem que você se tornaria.', {
-    //     'url': 'https://y.yarn.co/9156da2b-6e4a-415e-bf1a-46a02a576974.mp4',
-    //     'subtitle': 'he never doubted. ',
-    //     'translation': 'ele nunca duvidou.'
+    // ['https://y.yarn.co/e43524eb-70f9-48dc-8710-4364790ec533.mp4', 'Especially Sid.', 'Principalmente Sid.', {
+    //     'url': 'https://y.yarn.co/2d3893e5-a90f-4ed4-b4df-cb35edc2bd76.mp4',
+    //     'subtitle': 'Sid, Sid, Sid. ',
+    //     'translation': 'Sid, Sid, Sid.'
     // }],
-    // ['https://y.yarn.co/7547cc1f-c681-4b06-ac74-cd1f81ff39f8.mp4', 'How you were meant for great things.', 'Como você foi feito para grandes coisas.', {
-    //     'url': 'https://y.yarn.co/809d21c9-96a7-4a9e-accc-88599207024e.mp4',
-    //     'subtitle': 'you were meant for me ',
-    //     'translation': 'você foi feito para mim'
+    // ['https://y.yarn.co/d940b15d-ff73-41fa-a296-0e1afa8386a5.mp4', "Come on. You can lick this. You're a tiger. Look I'll carry you. Come on, what do you say?", 'Vamos. Você pode lamber isso. Você é um tigre. Olha eu vou te carregar. Vamos, o que você me diz?', {
+    //     'url': 'https://y.yarn.co/cafb7105-e9a2-4f7d-a39d-ac52ff9f413f.mp4',
+    //     'subtitle': '- Come on, what do you say? - Come on. ',
+    //     'translation': '- Vamos, o que você diz? - Vamos.'
     // }],
-    // ['https://y.yarn.co/4884e346-7340-4ddd-b13a-5e3022a3c4d3.mp4', "You won't disappoint him.", 'Você não o desapontará.', {
-    //     'url': 'https://y.yarn.co/e001a0e0-9b74-4c0e-95db-d7ba18b6263f.mp4',
-    //     'subtitle': "- You won't disappoint me? - No, I won't disappoint you. ",
-    //     'translation': '- Você não vai me decepcionar? - Não, não vou desapontá-lo.'
+    // ['https://y.yarn.co/41ff89d3-37fe-4895-9c6f-660fbd3a4146.mp4', 'Come on Diego, come on.', 'Vamos Diego, vamos.', {
+    //     'url': 'https://y.yarn.co/967b437a-575c-416e-bea3-9f7560e378e2.mp4',
+    //     'subtitle': 'Come on. Come on, come on. Diego! ',
+    //     'translation': 'Vamos. Vamos! Vamos. Diego!'
+    // }],
+    // ['https://y.yarn.co/63f6e879-0cf4-4ce9-b112-1308e9caa7b8.mp4', "Tell him he's going to be OK, Manny.", 'Diga que ele vai ficar bem, Manny.', {
+    //     'url': 'https://y.yarn.co/bd24057c-8db6-4c95-9665-6be0c494b833.mp4',
+    //     'subtitle': "He's going to be OK. ",
+    //     'translation': 'Ele vai ficar bem.'
+    // }],
+    // ['https://y.yarn.co/faf268c5-3041-4e7f-b909-df0faf070923.mp4', 'Listen. You have to leave me here.', 'Ouço. Você tem que me deixar aqui.', {
+    //     'url': 'https://y.yarn.co/ecf1df98-5e4f-48c8-ae54-a84f30eedf46.mp4',
+    //     'subtitle': "Listen, you can't leave me here. ",
+    //     'translation': 'Ouça, você não pode me deixar aqui.'
+    // }],
+    // ['https://y.yarn.co/26ca0082-8dd4-473a-8ce0-cbde0c6fc291.mp4', "If those humans get through the pass, you'll never catch them.", 'Se aqueles humanos passarem pela passagem, você nunca os pegará.', {
+    //     'url': 'https://y.yarn.co/e0835dc7-eba2-432c-a102-5b0f9ea990f0.mp4',
+    //     'subtitle': "You'll never catch them. ",
+    //     'translation': 'Você nunca os pegará.'
+    // }],
+    // ['https://y.yarn.co/617c6130-8b0e-44ba-a13e-206573204c76.mp4', "You didn't have to do that.", 'Você não precisava fazer isso.', {
+    //     'url': 'https://y.yarn.co/30eea737-872d-4e5d-8936-203d6b35b86d.mp4',
+    //     'subtitle': "You didn't have to do that. ",
+    //     'translation': 'Você não precisava fazer isso.'
+    // }],
+    // ['https://y.yarn.co/df0d94d1-d5b3-4528-ba30-7cd87b3cf76a.mp4', "That's what you do in a herd.", 'Isso é o que você faz em um rebanho.', {
+    //     'url': 'https://y.yarn.co/df0d94d1-d5b3-4528-ba30-7cd87b3cf76a.mp4',
+    //     'subtitle': "That's what you do in a herd. ",
+    //     'translation': 'Isso é o que você faz em um rebanho.'
     // }]
 ]
 
-export const nomeMovie = "homem aranha"
+export const nomeMovie = "Era Do gelo"

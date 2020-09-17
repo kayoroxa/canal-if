@@ -1,7 +1,17 @@
 import React, {useState, useEffect} from 'react';
 import { useNavigate } from 'react-router-dom';
 import ReactPlayer from 'react-player';
-import { MdQueuePlayNext, MdPlayArrow, MdNavigateBefore, MdNavigateNext, MdSkipPrevious, MdSkipNext  } from 'react-icons/md';
+
+import { 
+    MdQueuePlayNext,
+    MdDiscFull,
+    MdPlayArrow,
+    MdNavigateBefore,
+    MdNavigateNext,
+    MdSkipPrevious,
+    MdSkipNext
+} from 'react-icons/md';
+
 import EditInPlace from '../../components/EditInPlace';
 import { ContainerConfigPage } from './styles-config-page';
 
@@ -17,6 +27,7 @@ const ConfigPage = () => {
         indexPage,
         setIndexPage,
         proximaPage,
+        formatar,
     } = useDados()
 
 
@@ -64,6 +75,7 @@ const ConfigPage = () => {
             {exemploVideo}
             <header>
                 <MdQueuePlayNext size={50} onClick={() => proximaPage()}/>
+                <MdDiscFull size={50} onClick={() => formatar()}/>
                 <div>{indexCardConfig +1}/{lenDados}</div>
                 <div>{Math.round((indexCardConfig +1) * 100 / lenDados)}% Complete</div>
             </header>

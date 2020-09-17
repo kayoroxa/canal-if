@@ -29,7 +29,7 @@ function App() {
           <Route path="/config" element={<ConfigPage />} />
           <Route path="/translate" element={<DefinitionScreen frase = {dados[0].frase} />} />
           <Route path="/pronunciation" element={<PronunciationScreen frase = {dados[0].frase} />} />
-          <Route path="/video-index" element={<VideoScreen  qualTextoMostrar={qualTextoMostrar} />} />
+          <Route path="/video-index" element={<VideoScreen  qualTextoMostrar="en" />} />
           <Route path="/videos-completo" element={<VideoScreen reproduzirTodos={true} qualTextoMostrar={qualTextoMostrar} />} />
           <Route path="/fim" element={<div>FIM!!</div>} />
           <Route path="/audio" element={<AudioScreen />} />

@@ -10,6 +10,7 @@ export default function DadosProvider({ children }) {
     
     const cronograma = [
         "config",
+        "audio",
         "videos-completo",
         [
             "video-index",
@@ -27,44 +28,31 @@ export default function DadosProvider({ children }) {
 
 
     useEffect(() => {
-        console.log("mudou indexPage para", indexPage, "/", cronograma[2].length)
-        if (!entrouNoLoop && indexPage === 2) {
-            console.log("!entrouNoLoop && indexPage === 2", indexPage)
+        if (!entrouNoLoop && indexPage === 3) {
             setEntrouNoLoop(true)
             setIndexPage(0)
             setIndexPlay(0)
         }
         else if (entrouNoLoop) {
-            console.log("entrouNoLoop", indexPage)
-
-            
-            if (!cronograma[2][indexPage]) {
+            if (!cronograma[3][indexPage]) {
                 setIndexPage(0)
                 setIndexPlay(prev => prev +1)
-                console.log("!cronograma[2][indexPage]", indexPage)
             }
             else {
-                console.log("****mudou index Page", indexPage,  cronograma[2].length)
-                if (!dados[indexPlay]) {
+                if (!dados[indexPlay]) { //dps do loop
                     setEntrouNoLoop(false)
-                    setIndexPage(3) //dps do loop
+                    setIndexPage(4) 
                     setIndexPlay(0)
                 }
-                else {
-                    navigate("/" + cronograma[2][indexPage])
-                    console.log("index page", indexPage)
-                }
+                else navigate("/" + cronograma[3][indexPage])
             }
         }
-        else {
-            navigate("/" + cronograma[indexPage])
-            console.log("else else", indexPage)
-        }
+        else navigate("/" + cronograma[indexPage])
     }, [indexPage])
 
     const [indexCardConfig, setIndexCardConfig] = useState(0)
 
-    const [dados, setDados] = useState(dadinhos.map((card, index) => (
+    const handleDados = dadinhos.map((card, index) => (
         {
             urlFrase : card[0],
             frase : card[1],
@@ -75,12 +63,28 @@ export default function DadosProvider({ children }) {
             exemploTranslate : card[3].translation,
             urlExemplo : card[3].url,
         }
-    )))
+    ))
+
+    const [dados, setDados] = useState(
+        localStorage.getItem("dados") ? (
+            JSON.parse(localStorage.getItem("dados"))
+        ) : handleDados
+    )
+
+    const formatar = () => {
+        localStorage.removeItem("dados")
+        setDados(handleDados)
+    }
+    useEffect(() => {
+        localStorage.setItem("dados", JSON.stringify(dados))
+    }, [dados])
 
     const changerDados = (() => {
-        const subChanger = (name, index) => value => setDados((prev) => ({
-            ...prev, [index] : {...prev[index], [name]: value} 
-        }))
+        const subChanger = (name, index) => value => setDados((prev) => (
+            Object.values({
+                ...prev, [index] : {...prev[index], [name]: value} 
+            })
+        ))
         const retornar = Object.keys(dados).map((_) => ({}))
 
         for (const [index, card] of retornar.entries()) {
@@ -95,6 +99,7 @@ export default function DadosProvider({ children }) {
     return (
        <DadosContext.Provider
             value={{
+                nomeMovie,
                 dados,
                 changerDados,
                 indexCardConfig,
@@ -105,6 +110,7 @@ export default function DadosProvider({ children }) {
                 setIndexPage,
                 proximaPage,
                 proximoIndexPlay,
+                formatar,
             }}
        >
             {children}
@@ -116,6 +122,7 @@ export function useDados() {
     const context = useContext(DadosContext);
     if (!context) throw new Error('useDados must be used within a DadosProvider');
     const {
+        nomeMovie,
         dados,
         changerDados,
         indexCardConfig,
@@ -126,8 +133,10 @@ export function useDados() {
         setIndexPage,
         proximaPage,
         proximoIndexPlay,
+        formatar,
     } = context;
     return {
+        nomeMovie,
         dados,
         changerDados,
         indexCardConfig,
@@ -138,5 +147,6 @@ export function useDados() {
         setIndexPage,
         proximaPage,
         proximoIndexPlay,
+        formatar,
     };
 }

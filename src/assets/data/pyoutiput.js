@@ -9,21 +9,21 @@ export const dadinhos = [
         'subtitle': 'I know, I know, I know, I know, I know ',
         'translation': 'Eu sei, eu sei, eu sei, eu sei, eu sei'
     }],
-    ['https://y.yarn.co/a31313b2-c595-4b34-9628-7b3dac102e0f.mp4', 'I miss him too.', 'Sinto a falta dele também.', {
-        'url': 'https://y.yarn.co/71d4aff2-a470-4a3d-b0d8-6d5680fb8487.mp4',
-        'subtitle': 'I miss him, too. ',
-        'translation': 'Sinto a falta dele também.'
-    }],
-    ['https://y.yarn.co/d9b0f6e6-570b-46d3-ab5e-15b4ca20cd84.mp4', 'But he was there.', 'Mas ele estava lá.', {
-        'url': 'https://y.yarn.co/8d49f21a-74f6-4b5a-9f84-a43ad8d54002.mp4',
-        'subtitle': 'But he was there! ',
-        'translation': 'Mas ele estava lá!'
-    }],
-    ['https://y.yarn.co/3858e0bc-0940-4b74-9982-2fc2cea448d3.mp4', "I can't help thinking about the last thing I said to him.", 'Não consigo deixar de pensar na última coisa que disse a ele.', {
-        'url': 'https://y.yarn.co/4171c6c7-5ea3-473d-b99e-1c55b33225c8.mp4',
-        'subtitle': "I can't remember the last thing I said to him. ",
-        'translation': 'Não consigo me lembrar da última coisa que disse a ele.'
-    }],
+    // ['https://y.yarn.co/a31313b2-c595-4b34-9628-7b3dac102e0f.mp4', 'I miss him too.', 'Sinto a falta dele também.', {
+    //     'url': 'https://y.yarn.co/71d4aff2-a470-4a3d-b0d8-6d5680fb8487.mp4',
+    //     'subtitle': 'I miss him, too. ',
+    //     'translation': 'Sinto a falta dele também.'
+    // }],
+    // ['https://y.yarn.co/d9b0f6e6-570b-46d3-ab5e-15b4ca20cd84.mp4', 'But he was there.', 'Mas ele estava lá.', {
+    //     'url': 'https://y.yarn.co/8d49f21a-74f6-4b5a-9f84-a43ad8d54002.mp4',
+    //     'subtitle': 'But he was there! ',
+    //     'translation': 'Mas ele estava lá!'
+    // }],
+    // ['https://y.yarn.co/3858e0bc-0940-4b74-9982-2fc2cea448d3.mp4', "I can't help thinking about the last thing I said to him.", 'Não consigo deixar de pensar na última coisa que disse a ele.', {
+    //     'url': 'https://y.yarn.co/4171c6c7-5ea3-473d-b99e-1c55b33225c8.mp4',
+    //     'subtitle': "I can't remember the last thing I said to him. ",
+    //     'translation': 'Não consigo me lembrar da última coisa que disse a ele.'
+    // }],
     // ['https://y.yarn.co/415faf19-67d5-443f-951f-a706c8a6d114.mp4', 'He tried to tell me something important, and I threw it in his face.', 'Ele tentou me dizer algo importante e eu joguei na cara dele.', {
     //     'url': 'https://y.yarn.co/4891b4cb-80a2-4ba5-b07c-509f5f0efe44.mp4',
     //     'subtitle': 'I almost threw it in his face. ',

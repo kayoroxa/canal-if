@@ -31,6 +31,7 @@ function App() {
           <Route path="/pronunciation" element={<PronunciationScreen frase = {dados[0].frase} />} />
           <Route path="/video-index" element={<VideoScreen  qualTextoMostrar={qualTextoMostrar} />} />
           <Route path="/videos-completo" element={<VideoScreen reproduzirTodos={true} qualTextoMostrar={qualTextoMostrar} />} />
+          <Route path="/fim" element={<div>FIM!!</div>} />
           <Route path="/audio" element={<AudioScreen />} />
           <Route path="/" element={<ConfigPage />} />
         </Routes>

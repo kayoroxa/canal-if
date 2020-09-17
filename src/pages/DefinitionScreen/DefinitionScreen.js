@@ -10,7 +10,6 @@ const DefinitionScreen = () => {
     const temMaisCard = indexPlay < Object.keys(dados).length -1 ? true : false
     const dividir = (() => {
         const lista = []
-        console.log("indexPlay ", indexPlay)
         if (dados[indexPlay].frase.length > 22) {
             const tamanho = dados[indexPlay].frase.split(' ').length
             const separados = [dados[indexPlay].frase.split(' ').slice(0, (tamanho/2) +1).join(" "), dados[indexPlay].frase.split(' ').slice((tamanho/2 +1)).join(" ")]
@@ -35,11 +34,12 @@ const DefinitionScreen = () => {
     useEffect(() => {
         document.onkeydown = teclaCLicada
 
-        if (indexDefinition === dados[indexPlay].wordTranslate.split(",").length) setMostrarProximoCard(true)
-
-        else if (mostrarProximoCard && temMaisCard === true) {
-            proximaPage()
-        }
+        // if (indexDefinition === dados[indexPlay].wordTranslate.split(",").length) setMostrarProximoCard(true)
+        
+        // else if (mostrarProximoCard && temMaisCard === true) {
+        //     proximaPage()
+        // }
+        if (indexDefinition === dados[indexPlay].wordTranslate.split(",").length) proximaPage()
         return () => document.onkeydown = null
     }, [indexDefinition])
 

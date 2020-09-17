@@ -16,15 +16,9 @@ export default function DadosProvider({ children }) {
             "translate",
             "pronunciation",
         ],
-        // "fim",
+        "fim",
     ]
 
-    // const cronograma = [
-    //     // "config",
-    //     "video-index",
-    //     "translate",
-    //     "pronunciation",
-    // ]
 
     const [indexPlay, setIndexPlay] = useState(0)
     const proximoIndexPlay = () => setIndexPlay((prev) => prev +1)
@@ -33,28 +27,38 @@ export default function DadosProvider({ children }) {
 
 
     useEffect(() => {
-        // console.log("mudou indexPage para", indexPage)
+        console.log("mudou indexPage para", indexPage, "/", cronograma[2].length)
         if (!entrouNoLoop && indexPage === 2) {
-            // console.log("!entrouNoLoop && indexPage === 2", indexPage)
+            console.log("!entrouNoLoop && indexPage === 2", indexPage)
             setEntrouNoLoop(true)
             setIndexPage(0)
             setIndexPlay(0)
         }
         else if (entrouNoLoop) {
-            // console.log("entrouNoLoop", indexPage)
+            console.log("entrouNoLoop", indexPage)
+
+            
             if (!cronograma[2][indexPage]) {
                 setIndexPage(0)
                 setIndexPlay(prev => prev +1)
-                // console.log("!cronograma[2][indexPage]", indexPage)
+                console.log("!cronograma[2][indexPage]", indexPage)
             }
             else {
-                navigate("/" + cronograma[2][indexPage])
-                // console.log("index page", indexPage)
+                console.log("****mudou index Page", indexPage,  cronograma[2].length)
+                if (!dados[indexPlay]) {
+                    setEntrouNoLoop(false)
+                    setIndexPage(3) //dps do loop
+                    setIndexPlay(0)
+                }
+                else {
+                    navigate("/" + cronograma[2][indexPage])
+                    console.log("index page", indexPage)
+                }
             }
         }
         else {
             navigate("/" + cronograma[indexPage])
-            // console.log("else else", indexPage)
+            console.log("else else", indexPage)
         }
     }, [indexPage])
 

@@ -6,13 +6,13 @@ import { Container } from './styles-video-player';
 import { useState } from 'react';
 
 
-const VideoPlayer = ({  indexPlay, setIndexPlay, setIsPlaying }) => {
-    
-    const {dados} = useDados()
+const VideoPlayer = ({  indexPlay, setIndexPlay, setIsPlaying, reproduzirTodos }) => {
+    const {dados, proximaPage} = useDados()
     // const urls = dados.urlVideos
     // Object.keys(dados).map((card, index) => console.log(card))
     const mudar = (ultimoIndexTocado) => {
-        setIndexPlay(ultimoIndexTocado + 1)
+        if (reproduzirTodos) setIndexPlay(ultimoIndexTocado + 1)
+        else proximaPage()
     }
     
     return (

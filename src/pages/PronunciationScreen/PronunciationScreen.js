@@ -4,7 +4,7 @@ import { Container } from './styles-pronunciation-screen';
 import { useDados } from '../../context/Dados';
 
 const PronunciationScreen = () => {
-    const { proximaPage, dados, indexPlay, setIndexPlay } = useDados()
+    const { proximaPage, dados, indexPlay } = useDados()
 
     let innerEasy = (() => {
         if (!dados[indexPlay]) return ""
@@ -32,18 +32,13 @@ const PronunciationScreen = () => {
     const [step, setStep] = useState(0)
 
     useEffect(() => {
-        if (!dados[indexPlay]) proximaPage()
-    }, [indexPlay])
-
-    useEffect(() => {
         if (step >= innerEasy.split("order").length) {
-            setIndexPlay(prev => prev+1)
-            setStep(0)
+            proximaPage()
         }
     }, [step])
 
     useEffect(() => {
-        document.onkeydown = () => setStep((prev) => prev +1)
+        document.onkeydown = () => setStep((prev) => prev < innerEasy.split("order").length ? prev +1 : prev)
         return () => document.onkeydown = null
     })
 

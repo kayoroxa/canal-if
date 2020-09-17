@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { useNavigate } from 'react-router-dom';
 import ReactPlayer from 'react-player';
 import { MdQueuePlayNext, MdPlayArrow, MdNavigateBefore, MdNavigateNext, MdSkipPrevious, MdSkipNext  } from 'react-icons/md';
@@ -15,8 +15,14 @@ const ConfigPage = () => {
         indexCardConfig,
         setIndexCardConfig,
         indexPage,
+        setIndexPage,
         proximaPage,
     } = useDados()
+
+
+    useEffect(() => {
+        setIndexPage(0)
+    }, [])
 
     const lenDados = Object.keys(dados).length
     const [showVideo, setShowVideo] = useState({frase: false, exemplo: false})

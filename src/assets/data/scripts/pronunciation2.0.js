@@ -14,7 +14,8 @@ const isConsoante = (letra) => {
 }
 
 const span = (x, className = false) => {
-    if (className === null) return "´"+x+"`"//`<span>${x}</span>`
+    
+    if (className === null) return `´${x}\``
     if (className === "hidden") return `{${x}}`
     if (className === "change") return `[${x}]`
     if (className === false) return `(${x})`
@@ -184,6 +185,10 @@ export const getPronuncia = (frase) => {
     // for (let c = 1; c <= lengthOrder; c++) {
     //     pronuncia = pronuncia.replace("%", c)
     // }
+    // pronuncia = pronuncia.replaceAll("()","")
+    // pronuncia = pronuncia.replaceAll("[]","")
+    // pronuncia = pronuncia.replaceAll("{}","")
+    // pronuncia = pronuncia.replaceAll("´`","")
     return pronuncia
 }
 

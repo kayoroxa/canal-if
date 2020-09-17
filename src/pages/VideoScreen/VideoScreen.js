@@ -7,7 +7,7 @@ import SubtitlePlayer from '../../components/SubtitlePlayer';
 
 import { Container, Top, Button, Main } from './styles-video-screen.js';
 
-const VideoScreen = ({ qualTextoMostrar}) => {
+const VideoScreen = ({ qualTextoMostrar, reproduzirTodos }) => {
     const { indexPlay, setIndexPlay, proximaPage, dados} = useDados()
     const [isPlaying, setIsPlaying] = useState(false)
 
@@ -19,11 +19,11 @@ const VideoScreen = ({ qualTextoMostrar}) => {
        <Container>
            <Main>
                 <Top>
-                    <VideoPlayer indexPlay={indexPlay} setIndexPlay={setIndexPlay} setIsPlaying = {setIsPlaying} />
+                    <VideoPlayer reproduzirTodos={reproduzirTodos} indexPlay={indexPlay} setIndexPlay={setIndexPlay} setIsPlaying = {setIsPlaying} />
                     <div className="logo bold" style={!isPlaying ? { display: "none" } : null}>INGLESFLIX</div>
                 </Top>
                 <Button>
-                    <SubtitlePlayer qualTextoMostrar = {qualTextoMostrar} state={[indexPlay, setIndexPlay]} />
+                    <SubtitlePlayer reproduzirTodos={reproduzirTodos} qualTextoMostrar = {qualTextoMostrar} state={[indexPlay, setIndexPlay]} />
                 </Button>
            </Main>
        </Container>

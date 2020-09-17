@@ -6,13 +6,25 @@ const DadosContext = createContext();
 
 export default function DadosProvider({ children }) {
     const navigate = useNavigate()
+    const [entrouNoLoop, setEntrouNoLoop] = useState(false)
     
     const cronograma = [
         "config",
-        "pronunciation",
-        "translate",
-        "videos",
+        "videos-completo",
+        [
+            "video-index",
+            "translate",
+            "pronunciation",
+        ],
+        // "fim",
     ]
+
+    // const cronograma = [
+    //     // "config",
+    //     "video-index",
+    //     "translate",
+    //     "pronunciation",
+    // ]
 
     const [indexPlay, setIndexPlay] = useState(0)
     const proximoIndexPlay = () => setIndexPlay((prev) => prev +1)
@@ -21,8 +33,29 @@ export default function DadosProvider({ children }) {
 
 
     useEffect(() => {
-        navigate("/" + cronograma[indexPage])
-        setIndexPlay(0)
+        // console.log("mudou indexPage para", indexPage)
+        if (!entrouNoLoop && indexPage === 2) {
+            // console.log("!entrouNoLoop && indexPage === 2", indexPage)
+            setEntrouNoLoop(true)
+            setIndexPage(0)
+            setIndexPlay(0)
+        }
+        else if (entrouNoLoop) {
+            // console.log("entrouNoLoop", indexPage)
+            if (!cronograma[2][indexPage]) {
+                setIndexPage(0)
+                setIndexPlay(prev => prev +1)
+                // console.log("!cronograma[2][indexPage]", indexPage)
+            }
+            else {
+                navigate("/" + cronograma[2][indexPage])
+                // console.log("index page", indexPage)
+            }
+        }
+        else {
+            navigate("/" + cronograma[indexPage])
+            // console.log("else else", indexPage)
+        }
     }, [indexPage])
 
     const [indexCardConfig, setIndexCardConfig] = useState(0)
@@ -65,6 +98,7 @@ export default function DadosProvider({ children }) {
                 indexPlay,
                 setIndexPlay,
                 indexPage,
+                setIndexPage,
                 proximaPage,
                 proximoIndexPlay,
             }}
@@ -85,6 +119,7 @@ export function useDados() {
         indexPlay,
         setIndexPlay,
         indexPage,
+        setIndexPage,
         proximaPage,
         proximoIndexPlay,
     } = context;
@@ -96,6 +131,7 @@ export function useDados() {
         indexPlay,
         setIndexPlay,
         indexPage,
+        setIndexPage,
         proximaPage,
         proximoIndexPlay,
     };

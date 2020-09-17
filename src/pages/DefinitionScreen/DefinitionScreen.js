@@ -38,16 +38,8 @@ const DefinitionScreen = () => {
         if (indexDefinition === dados[indexPlay].wordTranslate.split(",").length) setMostrarProximoCard(true)
 
         else if (mostrarProximoCard && temMaisCard === true) {
-            // proximoIndexPlay() mudou aq
             proximaPage()
-            // setMostrarProximoCard(false)
         }
-
-        // else if (mostrarProximoCard  && temMaisCard === false) {
-        //     proximaPage()
-        //     setMostrarProximoCard(false)
-        // }
-
         return () => document.onkeydown = null
     }, [indexDefinition])
 

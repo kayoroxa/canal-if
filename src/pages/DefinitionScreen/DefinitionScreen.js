@@ -32,7 +32,6 @@ const DefinitionScreen = () => {
     }
     
     useEffect(() => {
-        console.log(indexPlay, "index")
         document.onkeydown = teclaCLicada
 
         if (indexDefinition === dados[indexPlay].wordTranslate.split(",").length) setMostrarProximoCard(true)

@@ -9,9 +9,9 @@ export default function DadosProvider({ children }) {
     
     const cronograma = [
         "config",
+        "pronunciation",
         "translate",
         "videos",
-        "pronunciation",
     ]
 
     const [indexPlay, setIndexPlay] = useState(0)

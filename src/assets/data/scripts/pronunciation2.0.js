@@ -14,10 +14,13 @@ const isConsoante = (letra) => {
 }
 
 const span = (x, className = false) => {
-    if (className === null) return `<span>${x}</span>`
-    const open = `<span order="%"${className ? ' class='+className : ''}>`
-    const close = `</span>`
-    return open+x+close
+    if (className === null) return "´"+x+"`"//`<span>${x}</span>`
+    if (className === "hidden") return `{${x}}`
+    if (className === "change") return `[${x}]`
+    if (className === false) return `(${x})`
+    // const open = `<span order="%"${className ? ' class='+className : ''}>`
+    // const close = `</span>`
+    // return open+x+close
 }
 
 export const getPronuncia = (frase) => {
@@ -177,11 +180,11 @@ export const getPronuncia = (frase) => {
     }
     let pronuncia = frase.join(" ")
     
-    const lengthOrder = (pronuncia.match(/%/g) || []).length
-    for (let c = 1; c <= lengthOrder; c++) {
-        pronuncia = pronuncia.replace("%", c)
-    }
+    // const lengthOrder = (pronuncia.match(/%/g) || []).length
+    // for (let c = 1; c <= lengthOrder; c++) {
+    //     pronuncia = pronuncia.replace("%", c)
+    // }
     return pronuncia
 }
 
-// console.log(getPronuncia("take aning cant time"))
+console.log(getPronuncia("i was a"))

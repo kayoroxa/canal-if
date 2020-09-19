@@ -44,6 +44,7 @@ const PronunciationScreen = () => {
 
     return (
         <Container indexView={step < 0 ? 0 : step}>
+            <audio src={process.env.PUBLIC_URL + '/audios/pronuncias.mp3'} autoPlay/>
             <div className="main">
                 <p dangerouslySetInnerHTML={{ __html: innerEasy }} />
             </div>

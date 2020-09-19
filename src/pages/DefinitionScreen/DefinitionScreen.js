@@ -47,6 +47,7 @@ const DefinitionScreen = () => {
     //////////////////////////////////////////////////////////////////
     return (
        <Container>
+           <audio src={process.env.PUBLIC_URL + '/audios/definition.mp3'} autoPlay/>
            <div className="frase">
                 {dividir ? dividir.map((element, i) => <React.Fragment key={i}>{element}</React.Fragment>) : <p>{dados[indexPlay].frase}</p>}
            </div>

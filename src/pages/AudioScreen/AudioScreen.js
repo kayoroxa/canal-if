@@ -5,15 +5,21 @@ import { Container } from './styles-audio-screen';
 const AudioScreen = () => {
     const { dados, indexPlay, proximaPage, nomeMovie } = useDados()
 
-    useEffect(() => {
-        document.onkeydown = () => proximaPage()
+    // useEffect(() => {
+    //     document.onkeydown = () => proximaPage()
 
-        return () => document.onkeydown = null
-    }, [])
+    //     return () => document.onkeydown = null
+    // }, [])
     return (
         <Container>
             <div className="title">
                 <div className="logo bold">INGLÊSFLIX</div>
+                <audio 
+                    src={process.env.PUBLIC_URL + '/audios/intro.mp3'}
+                    // src={Intro}
+                    autoPlay
+                    onEnded={() => proximaPage()}
+                />
                 <p>apresenta:</p> 
                 <h1 className="bold">{nomeMovie}</h1>
             </div>

@@ -2,25 +2,25 @@ import React, {useEffect} from 'react';
 import { useDados } from '../../context/Dados';
 import { Container } from './styles-audio-screen';
 
-const AudioScreen = () => {
-    const { dados, indexPlay, proximaPage, nomeMovie } = useDados()
+const AudioScreen = ({alfaOmega}) => {
+    const { dados, indexPlay, proximaPage, nomeMovie, voiceAlfaOmega } = useDados()
 
-    // useEffect(() => {
-    //     document.onkeydown = () => proximaPage()
-
-    //     return () => document.onkeydown = null
-    // }, [])
     return (
         <Container>
             <div className="title">
                 <div className="logo bold">INGLÊSFLIX</div>
                 <audio 
-                    src={process.env.PUBLIC_URL + '/audios/intro.mp3'}
-                    // src={Intro}
+                    src = {
+                        voiceAlfaOmega[alfaOmega] !== '' ? (
+                            voiceAlfaOmega[alfaOmega]
+                        ) : (
+                            process.env.PUBLIC_URL + '/audios/intro.mp3'
+                        )
+                    }
                     autoPlay
                     onEnded={() => proximaPage()}
                 />
-                <p>apresenta:</p> 
+                {alfaOmega === 'alfa' ? <p>apresenta:</p> : ""}
                 <h1 className="bold">{nomeMovie}</h1>
             </div>
             <video src={dados[indexPlay].urlFrase} autoPlay muted loop></video>

@@ -19,10 +19,10 @@ const SubtitlePlayer = ({qualTextoMostrar, state }) => {
                 {dados[indexPlay] && qualTextoMostrar === "pt" && <>
                     <div className="en"><p> {dados[indexPlay].fraseTranslate} </p></div>
                 </>}
-                {dados[indexPlay] && qualTextoMostrar === "pronunciaAndExemplo" && <>
-                    <div className="pronuncia"><p> {dados[indexPlay].pronuncia} </p></div>
-                    <div className="en"><p> {dados[indexPlay].frase} </p></div>
-                    <div className="pt"><p> {dados[indexPlay].fraseTranslate} </p></div>
+                {dados[indexPlay] && qualTextoMostrar === "exemplo" && <>
+                    {/* <div className="pronuncia"><p> {dados[indexPlay].pronuncia} </p></div> */}
+                    <div className="en"><p> {dados[indexPlay].exemploFrase} </p></div>
+                    <div className="pt"><p> {dados[indexPlay].exemploTranslate} </p></div>
                 </>}
             </div>
        </Container>

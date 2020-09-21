@@ -21,11 +21,15 @@ export const ContainerConfigPage = styled.div`
       display: flex; flex-direction: row; align-items: center; justify-content: space-between;
       margin-top: 1.5%; margin-bottom: 1.5%;
       /* background: skyblue; */
-      .main {
+      > .main {
          width: 85%;
          height: 100%;
          display: flex; flex-direction: column; align-items: space;
-         .title {text-transform: uppercase; font-size: 2.5vh}
+         .title {
+            text-transform: uppercase; font-size: 2.5vh;
+            display: flex;
+            justify-content: space-between;
+         }
          .line-box {
             flex:1;
             width: 100%;

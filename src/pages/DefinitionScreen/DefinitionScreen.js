@@ -2,9 +2,16 @@ import React, {useState, useEffect} from 'react';
 import { useDados } from '../../context/Dados';
 import { Container } from './styles-definition-screen';
 
+
 const DefinitionScreen = () => {
     const [indexDefinition, setIndexDefinition] = useState(0)
-    const { indexPlay, proximoIndexPlay, dados, proximaPage } = useDados()
+    const { 
+        indexPlay,
+        proximoIndexPlay,
+        dados,
+        proximaPage
+    } = useDados()
+
     const [mostrarProximoCard, setMostrarProximoCard] = useState(false)
 
     const temMaisCard = indexPlay < Object.keys(dados).length -1 ? true : false
@@ -47,7 +54,7 @@ const DefinitionScreen = () => {
     //////////////////////////////////////////////////////////////////
     return (
        <Container>
-           <audio src={process.env.PUBLIC_URL + '/audios/definition.mp3'} autoPlay/>
+           <audio src={dados[indexPlay].voiceTranslate} autoPlay/>
            <div className="frase">
                 {dividir ? dividir.map((element, i) => <React.Fragment key={i}>{element}</React.Fragment>) : <p>{dados[indexPlay].frase}</p>}
            </div>

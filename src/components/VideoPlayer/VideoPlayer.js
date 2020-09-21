@@ -6,7 +6,7 @@ import { Container } from './styles-video-player';
 import { useState } from 'react';
 
 
-const VideoPlayer = ({  indexPlay, setIndexPlay, setIsPlaying, reproduzirTodos }) => {
+const VideoPlayer = ({  indexPlay, setIndexPlay, setIsPlaying, reproduzirTodos, qualTextoMostrar }) => {
     const {dados, proximaPage} = useDados()
     // const urls = dados.urlVideos
     // Object.keys(dados).map((card, index) => console.log(card))
@@ -20,7 +20,7 @@ const VideoPlayer = ({  indexPlay, setIndexPlay, setIsPlaying, reproduzirTodos }
             {Object.values(dados).map((card, index) => (
                     <ReactPlayer 
                         key={index}
-                        url={card.urlFrase}
+                        url={qualTextoMostrar !== "exemplo" ? card.urlFrase : card.urlExemplo}
                         config={{
                             file: { 
                                 attributes: { 

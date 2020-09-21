@@ -23,11 +23,21 @@ const VideoScreen = ({ qualTextoMostrar, reproduzirTodos }) => {
        <Container>
            <Main>
                 <Top>
-                    <VideoPlayer reproduzirTodos={reproduzirTodos} indexPlay={indexPlay} setIndexPlay={setIndexPlay} setIsPlaying = {setIsPlaying} />
+                    <VideoPlayer 
+                        qualTextoMostrar={qualTextoMostrar}
+                        reproduzirTodos={reproduzirTodos}
+                        indexPlay={indexPlay}
+                        setIndexPlay={setIndexPlay}
+                        setIsPlaying = {setIsPlaying}
+                    />
                     <div className="logo bold" style={!isPlaying ? { display: "none" } : null}>INGLESFLIX</div>
                 </Top>
                 <Button>
-                    <SubtitlePlayer reproduzirTodos={reproduzirTodos} qualTextoMostrar = {qualTextoMostrar} state={[indexPlay, setIndexPlay]} />
+                    <SubtitlePlayer
+                        reproduzirTodos={reproduzirTodos}
+                        qualTextoMostrar = {qualTextoMostrar}
+                        state={[indexPlay, setIndexPlay]} 
+                    />
                 </Button>
            </Main>
        </Container>

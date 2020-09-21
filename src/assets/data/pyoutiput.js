@@ -4,16 +4,16 @@ export const dadinhos = [
         'subtitle': 'Huh, team? Huh? ',
         'translation': 'Huh, time? Hã?'
     }],
-    // ['https://y.yarn.co/358b2d41-822e-4b43-9f8f-770604214e01.mp4', "Were? Come on. We're still a team.", 'Estavam? Vamos. Ainda somos uma equipe.', {
-    //     'url': 'https://y.yarn.co/05e34795-2455-4ed1-b6f1-ca3af4eb6033.mp4',
-    //     'subtitle': "Come on, we're a team. ",
-    //     'translation': 'Vamos, somos uma equipe.'
-    // }],
-    // ['https://y.yarn.co/82a2b4e0-bd2b-4051-93a4-e2827d78a429.mp4', 'I am sorry I set you up.', 'Lamento ter armado para você.', {
-    //     'url': 'https://y.yarn.co/ae5a5fb1-acc6-4b26-a7b9-92ed05e4ccd9.mp4',
-    //     'subtitle': 'Okay I am sorry. ',
-    //     'translation': 'Ok, sinto muito.'
-    // }],
+    ['https://y.yarn.co/358b2d41-822e-4b43-9f8f-770604214e01.mp4', "Were? Come on. We're still a team.", 'Estavam? Vamos. Ainda somos uma equipe.', {
+        'url': 'https://y.yarn.co/05e34795-2455-4ed1-b6f1-ca3af4eb6033.mp4',
+        'subtitle': "Come on, we're a team. ",
+        'translation': 'Vamos, somos uma equipe.'
+    }],
+    ['https://y.yarn.co/82a2b4e0-bd2b-4051-93a4-e2827d78a429.mp4', 'I am sorry I set you up.', 'Lamento ter armado para você.', {
+        'url': 'https://y.yarn.co/ae5a5fb1-acc6-4b26-a7b9-92ed05e4ccd9.mp4',
+        'subtitle': 'Okay I am sorry. ',
+        'translation': 'Ok, sinto muito.'
+    }],
     // ['https://y.yarn.co/da225db9-29f8-497e-8b9e-b06d493b6fba.mp4', "Ah. You know me. I'm too lazy to hold a grudge.", 'Ah. Você me conhece. Estou com preguiça de guardar rancor.', {
     //     'url': 'https://y.yarn.co/ce9ba7ed-f2fd-435c-a239-cf6651d660c5.mp4',
     //     'subtitle': "I'm not one to hold a grudge. ",

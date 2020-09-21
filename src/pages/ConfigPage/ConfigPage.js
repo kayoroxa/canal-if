@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import { useNavigate } from 'react-router-dom';
 import ReactPlayer from 'react-player';
+import VoiceRecorder from '../../components/VoiceRecorder';
 
 import { 
     MdQueuePlayNext,
@@ -28,6 +29,8 @@ const ConfigPage = () => {
         setIndexPage,
         proximaPage,
         formatar,
+        voiceAlfaOmega,
+        changerVoiceAlfaOmega,
     } = useDados()
 
 
@@ -75,8 +78,20 @@ const ConfigPage = () => {
             {exemploVideo}
             <header>
                 <MdQueuePlayNext size={50} onClick={() => proximaPage()}/>
+                <VoiceRecorder 
+                    dado={voiceAlfaOmega.alfa}
+                    setAudios={changerVoiceAlfaOmega.alfa}
+                    name="voiceAlfa"
+                    size={22}
+                />
                 <MdDiscFull size={50} onClick={() => formatar()}/>
                 <div>{indexCardConfig +1}/{lenDados}</div>
+                <VoiceRecorder 
+                    dado={voiceAlfaOmega.omega}
+                    setAudios={changerVoiceAlfaOmega.omega}
+                    name="voiceOmega"
+                    size={22}
+                />
                 <div>{Math.round((indexCardConfig +1) * 100 / lenDados)}% Complete</div>
             </header>
             <div className="not-header">
@@ -95,13 +110,29 @@ const ConfigPage = () => {
                             <EditInPlace value={dados[indexCardConfig].fraseTranslate} onChangeValue={changerDados[indexCardConfig].fraseTranslate} />
                         </div>
                     </div>
-                    <div className="title">Word-translate</div>
+                    <div className="title">
+                        Word-translate
+                        <VoiceRecorder 
+                            dado={dados[indexCardConfig].voiceTranslate}
+                            setAudios={changerDados[indexCardConfig].voiceTranslate}
+                            name="voiceTranslate"
+                            size={22}
+                        />
+                    </div>
                     <div className="line-box word-translate">
                         <div className="content">
                             <EditInPlace value={dados[indexCardConfig].wordTranslate} onChangeValue={changerDados[indexCardConfig].wordTranslate} />
                         </div>
                     </div>
-                    <div className="title">Pronuncia</div>
+                    <div className="title">
+                        Pronuncia
+                        <VoiceRecorder
+                            dado={dados[indexCardConfig].voicePronuncia}
+                            setAudios={changerDados[indexCardConfig].voicePronuncia}
+                            name="voicePronuncia"
+                            size={22}
+                        />
+                    </div>
                     <div className="line-box pronuncia">
                         <div className="content">
                             <EditInPlace value={dados[indexCardConfig].pronuncia} onChangeValue={changerDados[indexCardConfig].pronuncia} />

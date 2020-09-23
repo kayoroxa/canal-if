@@ -37,8 +37,17 @@ const PronunciationScreen = () => {
         }
     }, [step])
 
+    const teclou = (e) => {
+        if (e.code === "NumpadEnter") {
+            proximaPage()
+        }
+        else {
+            setStep((prev) => prev < innerEasy.split("order").length ? prev +1 : prev)
+        }
+    }
+
     useEffect(() => {
-        document.onkeydown = () => setStep((prev) => prev < innerEasy.split("order").length ? prev +1 : prev)
+        document.onkeydown = (e) => teclou(e)
         return () => document.onkeydown = null
     })
 

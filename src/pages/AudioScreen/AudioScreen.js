@@ -5,6 +5,15 @@ import { Container } from './styles-audio-screen';
 const AudioScreen = ({alfaOmega}) => {
     const { dados, indexPlay, proximaPage, nomeMovie, voiceAlfaOmega } = useDados()
 
+    const teclou = (e) => {
+        if (e.code === "NumpadEnter") {
+            proximaPage()
+        }
+    }
+    useEffect(() => {
+        document.onkeydown = (e) => teclou(e)
+        return () => document.onkeydown = null
+    }, [])
     return (
         <Container>
             <div className="title">

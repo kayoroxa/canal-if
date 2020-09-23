@@ -30,16 +30,21 @@ const DefinitionScreen = () => {
         return false
     })()
 
-    const teclaCLicada = () => {
-        setIndexDefinition((prev) => prev < dados[indexPlay].wordTranslate.split(",").length  ? (
-            prev + 1
-        ) : (
-            0
-        ))
+    const teclaCLicada = (e) => {
+        if (e.code === "NumpadEnter") {
+            proximaPage()
+        }
+        else {
+            setIndexDefinition((prev) => prev < dados[indexPlay].wordTranslate.split(",").length  ? (
+                prev + 1
+            ) : (
+                0
+            ))
+        }
     }
     
     useEffect(() => {
-        document.onkeydown = teclaCLicada
+        document.onkeydown = (e) => teclaCLicada(e)
 
         // if (indexDefinition === dados[indexPlay].wordTranslate.split(",").length) setMostrarProximoCard(true)
         

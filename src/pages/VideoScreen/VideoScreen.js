@@ -19,6 +19,17 @@ const VideoScreen = ({ qualTextoMostrar, reproduzirTodos }) => {
         if (indexPlay > dados.length -1) chamou()
     }, [indexPlay])
 
+    const teclou = (e) => {
+        if (e.code === "NumpadEnter") {
+            proximaPage()
+        }
+    }
+
+    useEffect(() => {
+        document.onkeydown = (e) => teclou(e)
+        return () => document.onkeydown = null
+    }, [])
+
     return (
        <Container>
            <Main>

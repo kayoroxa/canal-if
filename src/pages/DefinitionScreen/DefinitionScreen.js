@@ -21,22 +21,28 @@ const DefinitionScreen = () => {
 
     const dividir = quebraDeLinha(dados[indexPlay].frase)
 
+    let fim = false
+
     const teclaCLicada = (e) => {
-        if (e.code === "NumpadEnter") {
+        if (e.code === "NumpadEnter" || fim) {
             proximaPage()
         }
         else {
-            setIndexDefinition((prev) => prev < dados[indexPlay].wordTranslate.split(",").length  ? (
-                prev + 1
-            ) : (
-                0
-            ))
+            setIndexDefinition((prev) => prev + 1)
+            // setIndexDefinition((prev) => prev < dados[indexPlay].wordTranslate.split(",").length  ? (
+            //     prev + 1
+            // ) : (
+            //     0
+            // ))
         }
     }
     
+
     useEffect(() => {
         document.onkeydown = (e) => teclaCLicada(e)
-        if (indexDefinition === dados[indexPlay].wordTranslate.split(",").length) proximaPage()
+        console.log("index definition: ", indexDefinition)
+        console.log("len: ", dados[indexPlay].wordTranslate.split(",").length)
+        if (indexDefinition === dados[indexPlay].wordTranslate.split(",").length +1) proximaPage()
         return () => document.onkeydown = null
     }, [indexDefinition])
 

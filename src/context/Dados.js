@@ -6,7 +6,7 @@ const DadosContext = createContext();
 
 export default function DadosProvider({ children }) {
 
-    const indexPlayInicial = 8
+    const indexPlayInicial = 0
 
     const navigate = useNavigate()
 
@@ -20,8 +20,7 @@ export default function DadosProvider({ children }) {
     }
 
     const cronograma = [
-        "translate",
-        // "config",
+        "config",
         // "audio",
         // "videos-completo",
         [

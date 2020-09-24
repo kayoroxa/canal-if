@@ -24,7 +24,7 @@ export const Main = styled.div`
 
 export const Top = styled.div`
     width: 50%;
-    height: 80%;
+    height: 60%;
     position: relative;
 
     .logo {

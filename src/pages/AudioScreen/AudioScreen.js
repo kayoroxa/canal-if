@@ -3,11 +3,21 @@ import { useDados } from '../../context/Dados';
 import { Container } from './styles-audio-screen';
 
 const AudioScreen = ({alfaOmega}) => {
-    const { dados, indexPlay, proximaPage, nomeMovie, voiceAlfaOmega } = useDados()
+    const {
+        dados,
+        indexPlay,
+        proximaPage,
+        nomeMovie,
+        voiceAlfaOmega,
+        voltarInicioPage ,
+    } = useDados()
 
     const teclou = (e) => {
         if (e.code === "NumpadEnter") {
             proximaPage()
+        }
+        else if (e.code === "Escape") {
+            voltarInicioPage()
         }
     }
 

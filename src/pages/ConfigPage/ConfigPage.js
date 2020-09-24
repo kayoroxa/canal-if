@@ -20,6 +20,7 @@ import { useDados } from '../../context/Dados';
 
 
 const ConfigPage = () => {
+    console.log("config")
     const {
         dados,
         changerDados,
@@ -71,7 +72,19 @@ const ConfigPage = () => {
             style={showVideo.exemplo ? {position: "absolute"} : {display: "none"}}
             onEnded={() => setShowVideo((prev) => ( {...prev, exemplo: false} ))}
         />)
+    const teclou = (e) => {
+        if (e.code === "NumpadEnter") {
+            proximaPage()
+        }
+        else if (e.code === "Escape") {
+            voltarInicioPage()
+        }
+    }
 
+    useEffect(() => {
+        document.onkeydown = (e) => teclou(e)
+        return () => document.onkeydown = null
+    }, [])
     return (
         <ContainerConfigPage>
             {fraseVideo}

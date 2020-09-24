@@ -23,7 +23,7 @@ export const Container = styled.div`
         text-align: center;
     
         p {
-            font-size: 130%;
+            font-size: 150%;
             font-weight: 500;
         }
     

@@ -8,8 +8,15 @@ import SubtitlePlayer from '../../components/SubtitlePlayer';
 import { Container, Top, Button, Main } from './styles-video-screen.js';
 
 const VideoScreen = ({ qualTextoMostrar, reproduzirTodos }) => {
-    const { indexPlay, setIndexPlay, proximaPage, dados} = useDados()
-    const [isPlaying, setIsPlaying] = useState(false)
+    const {
+        indexPlay,
+        setIndexPlay,
+        proximaPage,
+        dados,
+        voltarInicioPage,
+    } = useDados()
+
+    const [isPlaying, setIsPlaying] = useState(true)
 
     const chamou = () => {
         proximaPage()
@@ -23,6 +30,9 @@ const VideoScreen = ({ qualTextoMostrar, reproduzirTodos }) => {
     const teclou = (e) => {
         if (e.code === "NumpadEnter") {
             proximaPage()
+        }
+        else if (e.code === "Escape") {
+            voltarInicioPage()
         }
     }
 

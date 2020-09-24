@@ -10,7 +10,8 @@ const DefinitionScreen = () => {
         indexPlay,
         proximoIndexPlay,
         dados,
-        proximaPage
+        proximaPage,
+        voltarInicioPage,
     } = useDados()
 
     const [mostrarProximoCard, setMostrarProximoCard] = useState(false)
@@ -26,6 +27,9 @@ const DefinitionScreen = () => {
     const teclaCLicada = (e) => {
         if (e.code === "NumpadEnter" || fim) {
             proximaPage()
+        }
+        else if (e.code === "Escape") {
+            voltarInicioPage()
         }
         else {
             setIndexDefinition((prev) => prev + 1)

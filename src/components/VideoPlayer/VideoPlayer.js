@@ -18,19 +18,29 @@ const VideoPlayer = ({  indexPlay, setIndexPlay, setIsPlaying, reproduzirTodos, 
     return (
         <Container>
             {Object.values(dados).map((card, index) => (
-                    <ReactPlayer 
+                    <video 
                         key={index}
-                        url={qualTextoMostrar !== "exemplo" ? card.urlFrase : card.urlExemplo}
-                        config={{
-                            file: { 
-                                attributes: { 
-                                    preload: 'auto' 
-                                }
-                            }}}
-                        playing = {index === indexPlay ? true : false}
+                        src={qualTextoMostrar !== "exemplo" ? card.urlFrase : card.urlExemplo}
+                        autoPlay = {index === indexPlay ? true : false}
                         style={index !== indexPlay ? {display: "none"} : null}
                         onEnded={() => mudar(index)}
                     />
+                    // <ReactPlayer 
+                    //     height = "409px"
+                    //     width = "758px"
+                    //     style = {{"border-radius": "50px"}}
+                    //     key={index}
+                    //     url={qualTextoMostrar !== "exemplo" ? card.urlFrase : card.urlExemplo}
+                    //     config={{
+                    //         file: { 
+                    //             attributes: { 
+                    //                 preload: 'auto' 
+                    //             }
+                    //         }}}
+                    //     // playing = {index === indexPlay ? true : false}
+                    //     style={index !== indexPlay ? {display: "none"} : null}
+                    //     onEnded={() => mudar(index)}
+                    // />
                 )
             )}
         </Container>

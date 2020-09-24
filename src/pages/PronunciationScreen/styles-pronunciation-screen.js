@@ -20,26 +20,37 @@ export const Container = styled.div`
     align-items: center;
     justify-content: center;
 
+    svg {
+        position: fixed;
+        right: 4%;
+        bottom: 5%;
+    }
+
     .main {
-        /* background: red; */
+        /* background: orange; */
         width: 85%;
         text-align: center;
         text-transform: uppercase;
-        * {font-size: 6vw;}
+        
+        * {font-size: 6vw; }
 
 
         > * {
-            >span {position: relative; line-height: 200%;}
+            /* margin-top: 20px; */
+            margin-bottom: -5%;
+            >span {position: relative; line-height: 190%; }
 
             ${({indexView}) => selectors(indexView, "span.change > span")} {
                 /* CHANGE inicializar*/
+                
                 position: absolute;
-                top: -50%;
+                top: -40%;
                 left: 0; right: 0; margin: auto;
                 opacity: 0;
                 font-size: 4vw;
                 line-height: 100%;
-            }${({indexView}) => selectors(indexView, "span.change% > span")} {/*change */opacity: 1;}
+                z-index: 3;
+            }${({indexView}) => selectors(indexView, "span.change% > span")} {/*change */opacity: 1; }
             
 
             ${({indexView}) => selectors(indexView, "span:not(.hidden):not(.change)%::after")}{
@@ -51,8 +62,8 @@ export const Container = styled.div`
                 left: 0;
                 right: 0;
                 width: 100%;
-                height: 100%;
-                bottom: 6%;
+                height: 80%;
+                bottom: 8%;
                 background: var(--blue);
                 z-index: -1;
             }

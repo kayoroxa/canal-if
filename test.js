@@ -1,4 +1,3 @@
-array = [["oi"], []]
-
-array.slice(-1)[0].push("olá")
-console.log(array.slice(-1)[0])
+teste = "oi tudo bom.".split(".")
+if (teste[5] === "") console.log("oi")
+// console.log()

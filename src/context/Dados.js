@@ -21,13 +21,13 @@ export default function DadosProvider({ children }) {
 
     const cronograma = [
         "config",
-        // "audio",
+        "audio",
         // "videos-completo",
         [
-            // "video-index",
+            "video-index",
             "translate",
-            // "pronunciation",
-            // "exemple",
+            "pronunciation",
+            "exemple",
         ],
         "fim",
     ]
@@ -48,6 +48,12 @@ export default function DadosProvider({ children }) {
 
     const proximaPage = () => setIndexPage((prev) => prev +1)
 
+    const voltarInicioPage = () => {
+        setIndexPage(0)
+        setEntrouNoLoop(false)
+        setIndexPlay(0)
+        navigate("/config")
+    }
 
     useEffect(() => {
         if (!entrouNoLoop && indexPage === indexLoop) {
@@ -143,6 +149,7 @@ export default function DadosProvider({ children }) {
                 setLastVoiceRecorder,
                 voiceAlfaOmega,
                 changerVoiceAlfaOmega,
+                voltarInicioPage,
             }}
        >
             {children}
@@ -170,6 +177,7 @@ export function useDados() {
         setLastVoiceRecorder,
         voiceAlfaOmega,
         changerVoiceAlfaOmega,
+        voltarInicioPage,
     } = context;
     return {
         nomeMovie,
@@ -188,5 +196,6 @@ export function useDados() {
         setLastVoiceRecorder,
         voiceAlfaOmega,
         changerVoiceAlfaOmega,
+        voltarInicioPage,
     };
 }

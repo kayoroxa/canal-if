@@ -72,12 +72,10 @@ const ConfigPage = () => {
             style={showVideo.exemplo ? {position: "absolute"} : {display: "none"}}
             onEnded={() => setShowVideo((prev) => ( {...prev, exemplo: false} ))}
         />)
+        
     const teclou = (e) => {
         if (e.code === "NumpadEnter") {
             proximaPage()
-        }
-        else if (e.code === "Escape") {
-            voltarInicioPage()
         }
     }
 

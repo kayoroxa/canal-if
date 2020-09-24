@@ -5,26 +5,35 @@ import { useNavigate } from 'react-router-dom';
 const DadosContext = createContext();
 
 export default function DadosProvider({ children }) {
+
+    const indexPlayInicial = 8
+
     const navigate = useNavigate()
+
     const [entrouNoLoop, setEntrouNoLoop] = useState(false)
+
     const [voiceAlfaOmega, setVoiceAlfaOmega] = useState({ alfa : '', omega : '' })
+
     const changerVoiceAlfaOmega = {
         alfa : newValor => setVoiceAlfaOmega(prev => ({...prev, alfa: newValor})),
         omega : newValor => setVoiceAlfaOmega(prev => ({...prev, omega: newValor})),
     }
+
     const cronograma = [
-        "config",
-        // 'test-recorder',
-        "audio",
-        "videos-completo",
+        "translate",
+        // "config",
+        // "audio",
+        // "videos-completo",
         [
-            "video-index",
+            // "video-index",
             "translate",
-            "pronunciation",
-            "exemple",
+            // "pronunciation",
+            // "exemple",
         ],
         "fim",
     ]
+
+    const indexLoop = cronograma.findIndex((e) => Array.isArray(e))
 
     const [lastVoiceRecorder, setLastVoiceRecorder] = useState("")
 
@@ -32,26 +41,24 @@ export default function DadosProvider({ children }) {
         console.log("MUDOU: ", lastVoiceRecorder)
     }, [lastVoiceRecorder])
 
-    const [indexPlay, setIndexPlay] = useState(0)
+    const [indexPlay, setIndexPlay] = useState(indexPlayInicial)
+
     const proximoIndexPlay = () => setIndexPlay((prev) => prev +1)
+
     const [indexPage, setIndexPage] = useState(0)
+
     const proximaPage = () => setIndexPage((prev) => prev +1)
 
-    useEffect(() => {
-        console.log("change IndexPlay")
-    }, [indexPlay])
-
 
     useEffect(() => {
-        console.log("change IndexPage")
-        if (!entrouNoLoop && indexPage === 3) {
+        if (!entrouNoLoop && indexPage === indexLoop) {
             setEntrouNoLoop(true)
             setIndexPage(0)
             navigate("/null")
-            setIndexPlay(0)
+            setIndexPlay(indexPlayInicial)
         }
         else if (entrouNoLoop) {
-            if (!cronograma[3][indexPage]) {
+            if (!cronograma[indexLoop][indexPage]) {
                 setIndexPage(0)
                 navigate("/null")
                 setIndexPlay(prev => prev +1)
@@ -59,11 +66,11 @@ export default function DadosProvider({ children }) {
             else {
                 if (!dados[indexPlay]) { //dps do loop
                     setEntrouNoLoop(false)
-                    setIndexPage(4) 
+                    setIndexPage(indexLoop +1) 
                     navigate("/null")
-                    setIndexPlay(0)
+                    setIndexPlay(indexPlayInicial)
                 }
-                else navigate("/" + cronograma[3][indexPage])
+                else navigate("/" + cronograma[indexLoop][indexPage])
             }
         }
         else navigate("/" + cronograma[indexPage])

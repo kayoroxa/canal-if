@@ -1,3 +1,1 @@
-f pai) {
-    
-// }
+console.log(array)

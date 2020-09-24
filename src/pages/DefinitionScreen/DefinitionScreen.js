@@ -1,10 +1,11 @@
 import React, {useState, useEffect} from 'react';
 import { useDados } from '../../context/Dados';
 import { Container } from './styles-definition-screen';
-
+import { quebraDeLinha, recordChair } from '../../assets/data/scripts/quebraDeLinha';
 
 const DefinitionScreen = () => {
     const [indexDefinition, setIndexDefinition] = useState(0)
+    
     const { 
         indexPlay,
         proximoIndexPlay,
@@ -15,20 +16,10 @@ const DefinitionScreen = () => {
     const [mostrarProximoCard, setMostrarProximoCard] = useState(false)
 
     const temMaisCard = indexPlay < Object.keys(dados).length -1 ? true : false
-    const dividir = (() => {
-        const lista = []
-        if (dados[indexPlay].frase.length > 22) {
-            const tamanho = dados[indexPlay].frase.split(' ').length
-            const separados = [dados[indexPlay].frase.split(' ').slice(0, (tamanho/2) +1).join(" "), dados[indexPlay].frase.split(' ').slice((tamanho/2 +1)).join(" ")]
-            if (separados.length > 1) {
-                for (let valor of separados) {
-                    lista.push(<p>{valor}</p>)
-                }
-                return lista
-            }
-        }
-        return false
-    })()
+
+    let tamanhoDeCaracteres = recordChair
+
+    const dividir = quebraDeLinha(dados[indexPlay].frase)
 
     const teclaCLicada = (e) => {
         if (e.code === "NumpadEnter") {
@@ -45,12 +36,6 @@ const DefinitionScreen = () => {
     
     useEffect(() => {
         document.onkeydown = (e) => teclaCLicada(e)
-
-        // if (indexDefinition === dados[indexPlay].wordTranslate.split(",").length) setMostrarProximoCard(true)
-        
-        // else if (mostrarProximoCard && temMaisCard === true) {
-        //     proximaPage()
-        // }
         if (indexDefinition === dados[indexPlay].wordTranslate.split(",").length) proximaPage()
         return () => document.onkeydown = null
     }, [indexDefinition])
@@ -58,19 +43,22 @@ const DefinitionScreen = () => {
     
     //////////////////////////////////////////////////////////////////
     return (
-       <Container>
-           <audio src={dados[indexPlay].voiceTranslate} autoPlay/>
-           <div className="frase">
-                {dividir ? dividir.map((element, i) => <React.Fragment key={i}>{element}</React.Fragment>) : <p>{dados[indexPlay].frase}</p>}
-           </div>
-           <div className="definition">
+        <Container 
+            quantidadeDeLinhas = {dividir.length}
+            quantidadeDefinition = {dados[indexPlay].wordTranslate.split(",").length}
+        >
+            <audio src={dados[indexPlay].voiceTranslate} autoPlay/>
+            <div className="frase">
+                 {dividir ? dividir.map((element, i) => <React.Fragment key={i}><p>{element}</p></React.Fragment>) : <p>{dados[indexPlay].frase}</p>}
+            </div>
+            <div className="definition">
                 {dados[indexPlay].wordTranslate.split(",").map((card, index) => (
-                    <p key={index} style={index < indexDefinition ? null : {opacity: 0}}>
+                    <li key={index} style={index < indexDefinition ? null : {opacity: 0}}>
                         <span className="bold">{card.split(":")[0].trim()}</span> = {card.split(":")[1].trim()}
-                    </p>
+                    </li>
                 ))}
-           </div>
-       </Container>
+            </div>
+        </Container>
     );
 }
 

@@ -10,10 +10,12 @@ const AudioScreen = ({alfaOmega}) => {
             proximaPage()
         }
     }
+
     useEffect(() => {
         document.onkeydown = (e) => teclou(e)
         return () => document.onkeydown = null
     }, [])
+    
     return (
         <Container>
             <div className="title">

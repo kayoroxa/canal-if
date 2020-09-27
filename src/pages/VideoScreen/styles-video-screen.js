@@ -37,6 +37,7 @@ export const Main = styled.div`
 `;
 
 export const Top = styled.div`
+    margin-top: 2%;
     width: 50%;
     height: 60%;
     position: relative;

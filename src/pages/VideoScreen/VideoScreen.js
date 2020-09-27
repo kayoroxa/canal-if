@@ -18,22 +18,15 @@ const VideoScreen = ({ qualTextoMostrar, reproduzirTodos }) => {
 
     const [isPlaying, setIsPlaying] = useState(true)
 
-    const chamou = () => {
-        proximaPage()
-        console.log('chamou')
-    }
+    const chamou = () => proximaPage()
     
     useEffect(() => {
         if (indexPlay > dados.length -1) chamou()
     }, [indexPlay])
 
     const teclou = (e) => {
-        if (e.code === "NumpadEnter") {
-            proximaPage()
-        }
-        else if (e.code === "Escape") {
-            voltarInicioPage()
-        }
+        if (e.code === "NumpadEnter") proximaPage()
+        else if (e.code === "Escape") voltarInicioPage()
     }
 
     useEffect(() => {

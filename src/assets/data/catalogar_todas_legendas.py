@@ -1,18 +1,19 @@
 from playsound import playsound
 from os import system 
 from time import sleep
-nome_movie = input('Nome do Movie html: ')
-movie = input('Nome do Movie yarn: ')
-# nome_movie = "DIARIOS DE UM VAMPIRO"
-# movie = "The Vampire Diaries"
+# nome_movie = input('Nome do Movie html: ')
+# movie = input('Nome do Movie yarn: ')
+nome_movie = "vida de inseto"
+movie = "A Bug's Life (1998)"
 
 destino = 'pyoutiput.js'
 maximo = 1  #sessao
-min = 25
-max = 80 #words unicas
+min = 30
+max = 38 #words unicas
 
+
+# try:
 from linkDef import link
-
 try:
     with open('words.txt', 'r', encoding="utf-8") as words:
         words = words.read().split('\n')
@@ -379,11 +380,15 @@ try:
                 ])
             break
         js_file.write(
-            f'var dadinhos = {dadinhos}\n\n'
-            f'var nomeMovie = "{nome_movie}"'
+            f'export const dadinhos = {dadinhos}\n\n'
+            f'export const nomeMovie = "{nome_movie}"'
         )
 except:
     input("ERRO NA GRAVAÇÃO")
 # except Exception as e:
 #     print("error ", e)
 #     input("")
+# except Exception as e:
+#     print("ERROOO", e)
+#     playsound("fim.mp3")
+#     input('')

@@ -10,20 +10,26 @@ const VideoPlayer = ({  indexPlay, setIndexPlay, setIsPlaying, reproduzirTodos, 
     const {dados, proximaPage} = useDados()
     // const urls = dados.urlVideos
     // Object.keys(dados).map((card, index) => console.log(card))
-    const mudar = (ultimoIndexTocado) => {
-        if (reproduzirTodos) setIndexPlay(ultimoIndexTocado + 1)
+    const mudar = () => {
+        if (reproduzirTodos && indexPlay < dados.length -1) setIndexPlay(prev => prev +1)
         else proximaPage()
     }
-    
+    const videoRef = useRef(null)
+    useEffect(() => {
+        // videoRef.current.play()
+    },[indexPlay])
+
     return (
         <Container>
             {Object.values(dados).map((card, index) => (
                     <video 
                         key={index}
+                        ref={index === indexPlay ? videoRef : null}
                         src={qualTextoMostrar !== "exemplo" ? card.urlFrase : card.urlExemplo}
-                        autoPlay = {index === indexPlay ? true : false}
+                        // play = {index === indexPlay ? true : false}
                         style={index !== indexPlay ? {display: "none"} : null}
-                        onEnded={() => mudar(index)}
+                        onEnded={() => mudar()}
+                        preload="auto"
                     />
                     // <ReactPlayer 
                     //     height = "409px"

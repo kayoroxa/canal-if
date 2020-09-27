@@ -31,11 +31,10 @@ const SubtitlePlayer = ({qualTextoMostrar, state }) => {
     }
 
     const en = dividirEmDois(dados[indexPlay].frase)
-
     const pt = dividirEmDois(dados[indexPlay].fraseTranslate)
 
     return (
-       <Container>
+        <Container>
             <div className={"paiLegenda " + qualTextoMostrar}>
                 {dados[indexPlay] && qualTextoMostrar === "pt-en" && <>
                     <div className="en"><p> {dados[indexPlay].frase} </p></div>
@@ -53,7 +52,7 @@ const SubtitlePlayer = ({qualTextoMostrar, state }) => {
                     <div className="pt"><p> {dados[indexPlay].exemploTranslate} </p></div>
                 </>}
             </div>
-       </Container>
+        </Container>
     );
 }
 

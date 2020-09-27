@@ -3,7 +3,21 @@ import styled from 'styled-components';
 export const Container = styled.div`
     width: 100vw;
     height: 100vh;
-    position: relative
+    position: relative;
+
+    > .logo-exemple {
+        width: 100%;
+        display: flex;
+        position: fixed;
+        top: 5%;
+        justify-content: center;
+        /* background: green; */
+        z-index: 2;
+        > p {
+            font-size: 150%;
+            background: var(--blue); padding: 10px 25px;
+        }
+    }
 `;
 
 export const Main = styled.div`

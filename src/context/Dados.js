@@ -21,12 +21,12 @@ export default function DadosProvider({ children }) {
 
     const cronograma = [
         "config",
-        "audio",
+        // "audio",
         // "videos-completo",
         [
-            "video-index",
-            "translate",
-            "pronunciation",
+            // "video-index",
+            // "translate",
+            // "pronunciation",
             "exemple",
         ],
         "fim",
@@ -88,7 +88,7 @@ export default function DadosProvider({ children }) {
             urlFrase : card[0],
             frase : card[1],
             fraseTranslate : card[2],
-            wordTranslate : "man : homem / cara, i like you : eu gostoooo de você, what's / what is : qual é, your name : seu nome",
+            wordTranslate : card[1].split(' ').map((word, i) => `${word}: ${card[2].split(' ')[i]}`).join(', ').replaceAll('!',''),
             voiceTranslate : "",
             pronuncia : getPronuncia(card[1]),
             voicePronuncia : "",

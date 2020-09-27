@@ -42,8 +42,11 @@ const VideoScreen = ({ qualTextoMostrar, reproduzirTodos }) => {
     }, [])
 
     return (
-       <Container>
-           <Main>
+        <Container>
+            {qualTextoMostrar === 'exemplo' ? (
+                <div className="logo-exemple "><p className='bold'>Exemplo</p></div>
+            ) : ''}
+            <Main>
                 <Top>
                     <VideoPlayer 
                         qualTextoMostrar={qualTextoMostrar}
@@ -61,8 +64,8 @@ const VideoScreen = ({ qualTextoMostrar, reproduzirTodos }) => {
                         state={[indexPlay, setIndexPlay]} 
                     />
                 </Button>
-           </Main>
-       </Container>
+            </Main>
+        </Container>
     );
 }
 

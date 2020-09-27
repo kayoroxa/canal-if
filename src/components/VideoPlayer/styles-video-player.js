@@ -14,7 +14,7 @@ export const Container = styled.div`
     video {
         /* min-width: 100%; */
         position: absolute;
-        background: pink;
+        /* background: pink; */
         position: absolute;
         margin: auto;
         position: absolute;

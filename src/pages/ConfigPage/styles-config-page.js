@@ -6,6 +6,14 @@ export const ContainerConfigPage = styled.div`
    position: relative;
    display: flex; flex-direction: column; align-items: center; justify-content: center;
 
+   video {
+      position: fixed;
+      height: 200px;
+      margin: auto;
+      right: 0; left: 0;
+      bottom: 10px;
+   }
+
    header {
       width: 80%;
       height: 5%;

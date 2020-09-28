@@ -1,6 +1,5 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import { useNavigate } from 'react-router-dom';
-import ReactPlayer from 'react-player';
 import VoiceRecorder from '../../components/VoiceRecorder';
 
 import { 
@@ -45,33 +44,33 @@ const ConfigPage = () => {
     const proximo = () => {setIndexCardConfig((prev) => prev +1 < lenDados ? prev +1 : prev)}
     const anterior = () => {setIndexCardConfig((prev) => prev -1 < 0 ? prev : prev -1)}
     
+    const fraseVideoRef = useRef(null)
+    const fraseExemploRef = useRef(null)
+
     const fraseVideo = (
-        <ReactPlayer
-            url={dados[indexCardConfig].urlFrase}
-            config={{
-                file: { 
-                    attributes: { 
-                        preload: 'auto' 
-                    }
-                }}}
-            playing = {showVideo.frase ? true : false}
+        <video
+            ref={fraseVideoRef}
+            src={dados[indexCardConfig].urlFrase}
             style={showVideo.frase ? {position: "absolute"} : {display: "none"}}
             onEnded={() => setShowVideo((prev) => ( {...prev, frase: false} ))}
-        />)
+            preload="auto"
+        />
+    )
     
     const exemploVideo = (
-        <ReactPlayer
-            url={dados[indexCardConfig].urlExemplo}
-            config={{
-                file: { 
-                    attributes: { 
-                        preload: 'auto' 
-                    }
-                }}}
-            playing = {showVideo.exemplo ? true : false}
+        <video
+            ref={fraseExemploRef}
+            src={dados[indexCardConfig].urlExemplo}
             style={showVideo.exemplo ? {position: "absolute"} : {display: "none"}}
             onEnded={() => setShowVideo((prev) => ( {...prev, exemplo: false} ))}
-        />)
+            preload="auto"
+        />
+    )
+
+    useEffect(() => {
+        if (showVideo.exemplo) fraseExemploRef.current.play()
+        else if (showVideo.frase) fraseVideoRef.current.play()
+    }, [showVideo])
         
     const teclou = (e) => {
         if (e.code === "NumpadEnter") {

@@ -1,5 +1,4 @@
 import React, {useEffect, useRef} from 'react';
-import ReactPlayer from 'react-player';
 import { useDados } from '../../context/Dados';
 
 import { Container } from './styles-video-player';

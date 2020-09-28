@@ -10,7 +10,11 @@ const VideoPlayer = ({  indexPlay, setIndexPlay, setIsPlaying, reproduzirTodos, 
     const [vezesRepetiuExemplo, setVezesRepetiuExemplo] = useState(1)
 
     const mudar = () => {
-        if (reproduzirTodos && indexPlay < dados.length -1) setIndexPlay(prev => prev +1)
+        
+        if (reproduzirTodos && indexPlay < dados.length -1) {
+            setIsPlaying(false)
+            setIndexPlay(prev => prev +1)
+        }
         else if (qualTextoMostrar == "exemplo" && vezesRepetiuExemplo < 2) {
             setVezesRepetiuExemplo(prev => prev +1)
             videoRef.current.play()
@@ -34,6 +38,7 @@ const VideoPlayer = ({  indexPlay, setIndexPlay, setIsPlaying, reproduzirTodos, 
                         style={index !== indexPlay ? {display: "none"} : null}
                         onEnded={() => mudar()}
                         preload="auto"
+                        onPlaying={() => setIsPlaying(true)}
                     />
                 )
             )}

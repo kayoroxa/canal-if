@@ -33,6 +33,20 @@ const SubtitlePlayer = ({qualTextoMostrar, state }) => {
     const en = dividirEmDois(dados[indexPlay].frase)
     const pt = dividirEmDois(dados[indexPlay].fraseTranslate)
 
+
+    let marcarWordsExemplo = () => {
+        let exemplo = dados[indexPlay].exemploFrase
+        let allWords = new RegExp("\\b(\\w*[a-zA-z]\\w*)\\b", "ig");
+        console.log([...dados[indexPlay].frase.match(allWords)])
+        for (let ww of [...dados[indexPlay].frase.match(allWords)]) {
+            let re = new RegExp("\\b(" + ww + ")\\b", "ig");
+            exemplo = exemplo.replace(re, '<span className="bold">$1</span>')
+        }
+        console.log(exemplo)
+        return exemplo
+    }
+    
+
     return (
         <Container>
             <div className={"paiLegenda " + qualTextoMostrar}>
@@ -47,9 +61,8 @@ const SubtitlePlayer = ({qualTextoMostrar, state }) => {
                     <div className="en">{pt}</div>
                 </>}
                 {dados[indexPlay] && qualTextoMostrar === "exemplo" && <>
-                    {/* <div className="pronuncia"><p> {dados[indexPlay].pronuncia} </p></div> */}
-                    <div className="en"><p> {dados[indexPlay].exemploFrase} </p></div>
-                    <div className="pt"><p> {dados[indexPlay].exemploTranslate} </p></div>
+                    <div className="exemplo en"><p  dangerouslySetInnerHTML={{ __html: marcarWordsExemplo() }} /></div>
+                    <div className="exemplo pt"><p> {dados[indexPlay].exemploTranslate} </p></div>
                 </>}
             </div>
         </Container>

@@ -22,11 +22,33 @@ export const Container = styled.div`
         justify-content: center;
         text-align: center;
     
-        p {
-            font-size: 150%;
-            font-weight: 500;
+        p, span {
+            font-size: 50px;
         }
     
+    }
+
+    > .exemplo .pt *{
+        opacity: 0.8;
+    }
+
+    > .exemplo .en {
+        * {color: orange;}
+        span {
+            font-weight: bold;
+            opacity: 1 !important;
+            position: relative;
+            /* color: var(--blue); */
+            /* ::after {
+                opacity: 0.5;
+                content : ''; display: block;
+                position: absolute;
+                background: orange;
+                width: calc(100% + 12.25px); height: 2px;
+                left: -6.125px; bottom: 5px;
+            } */
+        }
+
     }
 
     > .pt-en {

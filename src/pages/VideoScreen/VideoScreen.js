@@ -35,7 +35,7 @@ const VideoScreen = ({ qualTextoMostrar, reproduzirTodos }) => {
     }, [])
 
     return (
-        <Container>
+        <Container style={isPlaying ? {opacity : 1} : {opacity : 0}}>
             {qualTextoMostrar === 'exemplo' ? (
                 <div className="logo-exemple "><p className='bold'>Exemplo</p></div>
             ) : ''}

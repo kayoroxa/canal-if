@@ -19,10 +19,12 @@ export default function DadosProvider({ children }) {
         omega : newValor => setVoiceAlfaOmega(prev => ({...prev, omega: newValor})),
     }
 
+
     const cronograma = [
         "config",
         // "audio",
-        // "videos-completo",
+        "videos-completo-pt",
+        "videos-completo-en",
         [
             // "video-index",
             // "translate",
@@ -78,7 +80,10 @@ export default function DadosProvider({ children }) {
                 else navigate("/" + cronograma[indexLoop][indexPage])
             }
         }
-        else navigate("/" + cronograma[indexPage])
+        else {
+            setIndexPlay(0)
+            navigate("/" + cronograma[indexPage])
+        }
     }, [indexPage])
 
     const [indexCardConfig, setIndexCardConfig] = useState(0)

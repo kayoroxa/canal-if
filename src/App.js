@@ -34,7 +34,8 @@ function App() {
           <Route path="/video-index" element={<VideoScreen  qualTextoMostrar="en" />} />
           <Route path="/exemple" element={<VideoScreen  qualTextoMostrar="exemplo" />} />
           <Route path="/null" element={<div/>} />
-          <Route path="/videos-completo" element={<VideoScreen reproduzirTodos={true} qualTextoMostrar={qualTextoMostrar} />} />
+          <Route path="/videos-completo-pt" element={<VideoScreen reproduzirTodos={true} qualTextoMostrar="pt" />} />
+          <Route path="/videos-completo-en" element={<VideoScreen reproduzirTodos={true} qualTextoMostrar="en" />} />
           <Route path="/fim" element={<AudioScreen alfaOmega="omega"/>} />
           <Route path="/audio" element={<AudioScreen alfaOmega="alfa"/>} />
           <Route path="/" element={<ConfigPage />} />

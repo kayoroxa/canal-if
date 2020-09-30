@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useCallback} from 'react';
 import { useDados } from '../../context/Dados';
 
 import VideoPlayer from '../../components/VideoPlayer';
@@ -16,8 +16,9 @@ const VideoScreen = ({ qualTextoMostrar, reproduzirTodos }) => {
         voltarInicioPage,
     } = useDados()
 
-    const [isPlaying, setIsPlaying] = useState(true)
 
+    const [isPlaying, setIsPlaying] = useState(true)
+    const [canPlay, setCanPlay] = useState(false)
     const chamou = () => proximaPage()
     
     useEffect(() => {
@@ -25,7 +26,10 @@ const VideoScreen = ({ qualTextoMostrar, reproduzirTodos }) => {
     }, [indexPlay])
 
     const teclou = (e) => {
-        if (e.code === "NumpadEnter") proximaPage()
+        if (e.code === "NumpadEnter") {
+            setIndexPlay(0)
+            proximaPage()
+        }
         else if (e.code === "Escape") voltarInicioPage()
     }
 
@@ -35,7 +39,12 @@ const VideoScreen = ({ qualTextoMostrar, reproduzirTodos }) => {
     }, [])
 
     return (
-        <Container style={isPlaying ? {opacity : 1} : {opacity : 0}}>
+        <Container>
+            <audio 
+                src={process.env.PUBLIC_URL + '/audios/' + qualTextoMostrar + '.mp3'}
+                autoPlay={true}
+                onEnded={() => setCanPlay(true)}
+            />
             {qualTextoMostrar === 'exemplo' ? (
                 <div className="logo-exemple "><p className='bold'>Exemplo</p></div>
             ) : ''}
@@ -47,14 +56,16 @@ const VideoScreen = ({ qualTextoMostrar, reproduzirTodos }) => {
                         indexPlay={indexPlay}
                         setIndexPlay={setIndexPlay}
                         setIsPlaying = {setIsPlaying}
+                        canPlay = {canPlay}
+                        setCanPlay = {setCanPlay}
                     />
                     <div className="logo bold" style={!isPlaying ? { display: "none" } : null}>INGLESFLIX</div>
                 </Top>
-                <Button>
+                <Button style={canPlay ? {opacity : 1} : {opacity : 0}}>
                     <SubtitlePlayer
                         reproduzirTodos={reproduzirTodos}
                         qualTextoMostrar = {qualTextoMostrar}
-                        state={[indexPlay, setIndexPlay]} 
+                        state={[indexPlay, setIndexPlay]}
                     />
                 </Button>
             </Main>

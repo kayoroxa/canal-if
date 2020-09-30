@@ -5,28 +5,30 @@ import { Container } from './styles-video-player';
 import { useState } from 'react';
 
 
-const VideoPlayer = ({  indexPlay, setIndexPlay, setIsPlaying, reproduzirTodos, qualTextoMostrar }) => {
+const VideoPlayer = ({  indexPlay, setIndexPlay, setIsPlaying, reproduzirTodos, qualTextoMostrar, canPlay, setCanPlay }) => {
     const {dados, proximaPage} = useDados()
     const [vezesRepetiuExemplo, setVezesRepetiuExemplo] = useState(1)
 
     const mudar = () => {
-        
         if (reproduzirTodos && indexPlay < dados.length -1) {
             setIsPlaying(false)
             setIndexPlay(prev => prev +1)
         }
         else if (qualTextoMostrar == "exemplo" && vezesRepetiuExemplo < 2) {
             setVezesRepetiuExemplo(prev => prev +1)
-            videoRef.current.play()
+            if (canPlay) videoRef.current.play()
         }
-        else proximaPage()
+        else {
+            proximaPage()
+            setCanPlay(false)
+        }
     }
 
     const videoRef = useRef(null)
     
     useEffect(() => {
-        videoRef.current.play()
-    },[indexPlay])
+        if (canPlay) videoRef.current.play()
+    },[indexPlay, canPlay])
 
     return (
         <Container>

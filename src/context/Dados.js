@@ -22,13 +22,13 @@ export default function DadosProvider({ children }) {
 
     const cronograma = [
         "config",
-        // "audio",
+        "audio",
         "videos-completo-pt",
         "videos-completo-en",
         [
-            // "video-index",
-            // "translate",
-            // "pronunciation",
+            "video-index",
+            "translate",
+            "pronunciation",
             "exemple",
         ],
         "fim",
@@ -93,7 +93,9 @@ export default function DadosProvider({ children }) {
             urlFrase : card[0],
             frase : card[1],
             fraseTranslate : card[2],
-            wordTranslate : card[1].split(' ').map((word, i) => `${word}: ${card[2].split(' ')[i]}`).join(', ').replaceAll('!',''),
+            wordTranslate : card[1].split(' ').map(
+                    (word, i) => `${word}: ${card[2].split(' ')[i]}`
+                ).join(', ').replaceAll('!','').replaceAll(',','').replaceAll('?','').replaceAll('.',''),
             voiceTranslate : "",
             pronuncia : getPronuncia(card[1]),
             voicePronuncia : "",

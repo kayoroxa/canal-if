@@ -1,4 +1,4 @@
-def link(frase, raw=False, movie='', segundaFrase= '', ate='', linkUrl = False, getIndex = 1):
+def link(frase, raw=False, movie='', segundaFrase= '', ate='', atePenultimo ='', linkUrl = False, getIndex = 1):
 
     # try:
         import requests
@@ -48,9 +48,9 @@ def link(frase, raw=False, movie='', segundaFrase= '', ate='', linkUrl = False, 
         else:
             link = 'https://getyarn.io' + link.find('a').get('href')
             print(f"Procurado: {frase}\n pegado: {nome}")
-            next = link_next(link, segundaFrase, ate)
+            next = link_next(link, segundaFrase, ate, atePenultimo)
             if next != False:
-                return link_next(link, segundaFrase, ate)
+                return link_next(link, segundaFrase, ate, atePenultimo)
             else:
                 #tentar dnv
                 print("segundo tem nada haver")
@@ -63,7 +63,7 @@ def link(frase, raw=False, movie='', segundaFrase= '', ate='', linkUrl = False, 
     #     pass
 
 
-def link_next(url, segundaFrase="", ate=''):
+def link_next(url, segundaFrase="", ate='', atePenultimo=''):
     try:
         lista = []
         import requests
@@ -84,12 +84,21 @@ def link_next(url, segundaFrase="", ate=''):
 
             lista.append([title, url])
 
+            try:
+                penultimoTitle = lista[-2][0]
+            except:
+                penultimoTitle = 'caio rocha'
+
             link = soup.find_all("a", {"class": "prev-next"}, href=True)[1]['href']
             link = "https://getyarn.io" + link
 
             print("Next: link:", title, link)
 
             from difflib import SequenceMatcher
+            # porcentagemSemelhança = 0.84
+            if SequenceMatcher(None, ate, title).ratio() > 0.5 and SequenceMatcher(None, atePenultimo, penultimoTitle).ratio() > 0.84:
+                print("acabou")
+                return lista
             if SequenceMatcher(None, ate, title).ratio() > 0.84:
                 print("acabou")
                 return lista

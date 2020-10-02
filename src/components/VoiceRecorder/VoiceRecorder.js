@@ -1,5 +1,5 @@
 import React, {useState, useRef, useEffect} from 'react';
-import { MdFiberManualRecord, MdStop, MdPlayCircleOutline } from 'react-icons/md';
+import { MdFiberManualRecord, MdStop, MdPlayCircleOutline, MdFileDownload } from 'react-icons/md';
 import { ReactMic } from 'react-mic';
 import {useDados} from '../../context/Dados';
 
@@ -58,6 +58,8 @@ const VoiceRecorder = ({setAudios, dado, size, name}) => {
                     <MdStop fill="lightgray" size={size} onClick={() => stopRecording()}/>
                 )}
                 {dado !== "" ? <MdPlayCircleOutline fill="lightgray" size={size} onClick={() => play()} /> : ""}
+                {/* {dado !== "" ? <MdFileDownload fill="lightgray" size={size} onClick={() => play()} /> : ""} */}
+                {/* {dado !== "" ? <a href={dado} download="oi">download </a> : ""} */}
                 <audio src={!dado !== "" ? dado : null} ref={refAudio} />
             </div>
         </ContainerVoiceRecorder>

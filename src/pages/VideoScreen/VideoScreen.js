@@ -18,7 +18,7 @@ const VideoScreen = ({ qualTextoMostrar, reproduzirTodos }) => {
 
 
     const [isPlaying, setIsPlaying] = useState(true)
-    const [canPlay, setCanPlay] = useState(false)
+    const [canPlay, setCanPlay] = useState(qualTextoMostrar !== 'exemplo' && !reproduzirTodos ? true : false)
     const chamou = () => proximaPage()
     
     useEffect(() => {
@@ -27,7 +27,9 @@ const VideoScreen = ({ qualTextoMostrar, reproduzirTodos }) => {
 
     const teclou = (e) => {
         if (e.code === "NumpadEnter") {
-            setIndexPlay(0)
+            // setIndexPlay(0)
+            setCanPlay(false)
+            setIsPlaying(false)
             proximaPage()
         }
         else if (e.code === "Escape") voltarInicioPage()
@@ -40,11 +42,13 @@ const VideoScreen = ({ qualTextoMostrar, reproduzirTodos }) => {
 
     return (
         <Container>
-            <audio 
-                src={process.env.PUBLIC_URL + '/audios/' + qualTextoMostrar + '.mp3'}
-                autoPlay={true}
-                onEnded={() => setCanPlay(true)}
-            />
+            {qualTextoMostrar !== 'exemplo' && !reproduzirTodos ? "" : (
+                <audio 
+                    src={process.env.PUBLIC_URL + '/audios/' + qualTextoMostrar + '.mp3'}
+                    autoPlay={true}
+                    onEnded={() => setCanPlay(true)}
+                />
+            )}
             {qualTextoMostrar === 'exemplo' ? (
                 <div className="logo-exemple "><p className='bold'>Exemplo</p></div>
             ) : ''}

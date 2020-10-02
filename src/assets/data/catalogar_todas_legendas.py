@@ -3,8 +3,8 @@ from os import system
 from time import sleep
 # nome_movie = input('Nome do Movie html: ')
 # movie = input('Nome do Movie yarn: ')
-nome_movie = "vida de inseto"
-movie = "A Bug's Life (1998)"
+nome_movie = "Titanic"
+movie = "Titanic (1997)"
 
 destino = 'pyoutiput.js'
 maximo = 1  #sessao
@@ -15,7 +15,7 @@ max = 38 #words unicas
 # try:
 from linkDef import link
 try:
-    with open('words.txt', 'r', encoding="utf-8") as words:
+    with open('src/assets/data/words.txt', 'r', encoding="utf-8") as words:
         words = words.read().split('\n')
 except Exception as e:
     input(e)
@@ -46,7 +46,7 @@ def pontos_lista(lista):
 
 
 def pegar_sessoes ():
-    pasta = "todas legendas/"  # input
+    pasta = "src/assets/data/todas legendas/"  # input
     # pasta = 'teste/'
     file_out = 'legendasnovas'  # output
 
@@ -264,16 +264,19 @@ for melhor in melhores:
 
 print("\n\n")
 
+
+melhorEscolhido = int(input('Qual dialogo você quer? '))
+
 pack = []
-for i, item in enumerate(melhores):
+for i, item in enumerate([melhores[melhorEscolhido -1]]):
     print("\n\n\nPegando Sessao...")
-    sessao = link(item[0], movie=movie, segundaFrase=item[1], ate=item[-1])
+    sessao = link(item[0], movie=movie, segundaFrase=item[1], ate=item[-1], atePenultimo=item[-2])
 
     if sessao == False:
         getIndex = 1
         while sessao == False:
             getIndex += 1
-            sessao = link(item[0], movie=movie, segundaFrase=item[1], ate=item[-1], getIndex= getIndex)
+            sessao = link(item[0], movie=movie, segundaFrase=item[1], ate=item[-1], atePenultimo=item[-2], getIndex= getIndex)
 
     print("Sessão tamanho", sessao, '\n\n')
 
@@ -321,7 +324,7 @@ for sessao in pack:
 
 
 
-playsound("fim.mp3")
+playsound("src/assets/data/fim.mp3")
 print("BOTA A TRADUÇÃO \n")
 
 traducao = []

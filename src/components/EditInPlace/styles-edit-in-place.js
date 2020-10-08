@@ -9,5 +9,11 @@ export const ContainerEditInPlace = styled.div`
    .edit-in-place:hover {
       background: darkgray;
    }
-   input {width: 100%;}
+   span {
+      display: block;
+      width: 100%;
+      overflow: hidden;
+      resize: both;
+      /* min-height: 40px; */
+   }
 `;

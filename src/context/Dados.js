@@ -1,8 +1,10 @@
 import {getPronuncia} from '../assets/data/scripts/pronunciation2.0'
 import React, { createContext, useState, useContext, useEffect } from 'react';
 import {dadinhos, nomeMovie} from '../assets/data/pyoutiput'
+import {translationWords} from '../assets/data/translationWords';
 import { useNavigate } from 'react-router-dom';
 const DadosContext = createContext();
+
 
 export default function DadosProvider({ children }) {
 
@@ -80,7 +82,7 @@ export default function DadosProvider({ children }) {
                 else navigate("/" + cronograma[indexLoop][indexPage])
             }
         }
-        else {
+        else if (indexPage < cronograma.length) {
             setIndexPlay(0)
             navigate("/" + cronograma[indexPage])
         }
@@ -93,9 +95,10 @@ export default function DadosProvider({ children }) {
             urlFrase : card[0],
             frase : card[1],
             fraseTranslate : card[2],
-            wordTranslate : card[1].split(' ').map(
-                    (word, i) => `${word}: ${card[2].split(' ')[i]}`
-                ).join(', ').replaceAll('!','').replaceAll(',','').replaceAll('?','').replaceAll('.',''),
+            wordTranslate : card[1].match(/\w+’\w+|\w+'\w+|\w+/gi).map(
+                    // (word, i) => `${word}: ${card[2].match(/[^!\s?,';\|\\.]+/gi)[i]}`
+                    (word, i) => `${word}: ${translationWords[word.toLowerCase()]}`
+                ).join(', ').toLowerCase(),
             voiceTranslate : "",
             pronuncia : getPronuncia(card[1]),
             voicePronuncia : "",

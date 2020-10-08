@@ -26,6 +26,7 @@ const VoiceRecorder = ({setAudios, dado, size, name}) => {
     }
 
     const play = () => {
+        refAudio.current.playbackRate = 1.8
         refAudio.current.play()
     }
 

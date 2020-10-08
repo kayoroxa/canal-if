@@ -35,6 +35,7 @@ const VideoPlayer = ({  indexPlay, setIndexPlay, setIsPlaying, reproduzirTodos, 
             {Object.values(dados).map((card, index) => (
                     <video 
                         key={index}
+                        poster=""
                         ref={index === indexPlay ? videoRef : null}
                         src={qualTextoMostrar !== "exemplo" ? card.urlFrase : card.urlExemplo}
                         style={index !== indexPlay ? {display: "none"} : null}

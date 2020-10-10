@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const ContainerConfigPage = styled.div`
    width: 100vw;
-   height: 100vh;
+   min-height: 100vh;
    position: relative;
    display: flex; flex-direction: column; align-items: center; justify-content: center;
 
@@ -18,7 +18,7 @@ export const ContainerConfigPage = styled.div`
       width: 80%;
       height: 5%;
       /* background: pink; */
-      margin-top: 4%;
+      /* margin-top: 20px; */
       /* text-align: right; */
       display: flex; justify-content: space-between;
 

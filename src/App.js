@@ -1,25 +1,26 @@
-import React, {useState, useEffect} from 'react';
-import { Routes, Route, useNavigate } from 'react-router-dom';
+import React from 'react';
+import { Routes, Route } from 'react-router-dom';
 import GlobalStyles from './styles/GlobalStyles';
 import { useDados } from './context/Dados';
 import VideoScreen from './pages/VideoScreen';
 import AudioScreen from './pages/AudioScreen';
 import DefinitionScreen from './pages/DefinitionScreen';
 import PronunciationScreen from './pages/PronunciationScreen';
+import PageAllWordsLearning from './pages/PageAllWordsLearning';
 import ConfigPage from './pages/ConfigPage';
 import TestRecorder from './pages/TestRecorder';
 
 
 
 function App() {
-  const { indexPlay, setIndexPlay } = useDados()
-  const cronograma = [
-    "pt",
-    "en",
-  ]
-  const navigate = useNavigate()
-  const [pageInicial, setPageInicial] = useState(true)
-  const [qualTextoMostrar, setQualTextoMostrar] = useState(cronograma[0])
+  // const { indexPlay, setIndexPlay } = useDados()
+  // const cronograma = [
+  //   "pt",
+  //   "en",
+  // ]
+  // const navigate = useNavigate()
+  // const [pageInicial, setPageInicial] = useState(true)
+  // const [qualTextoMostrar, setQualTextoMostrar] = useState(cronograma[0])
 
   const {dados} = useDados()
 
@@ -38,6 +39,7 @@ function App() {
           <Route path="/videos-completo-en" element={<VideoScreen reproduzirTodos={true} qualTextoMostrar="en" />} />
           <Route path="/fim" element={<AudioScreen alfaOmega="omega"/>} />
           <Route path="/audio" element={<AudioScreen alfaOmega="alfa"/>} />
+          <Route path="/words-learning" element={<PageAllWordsLearning alfaOmega="alfa"/>} />
           <Route path="/" element={<ConfigPage />} />
           <Route path="/test-recorder" element={<TestRecorder />} />
         </Routes>

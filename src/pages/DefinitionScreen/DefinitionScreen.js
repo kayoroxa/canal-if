@@ -64,7 +64,7 @@ const DefinitionScreen = () => {
             <div className="definition">
                 {dados[indexPlay].wordTranslate.split(",").map((card, index) => (
                     <li key={index} style={index < indexDefinition ? null : {opacity: 0}}>
-                        <span className="bold">{card.split(":")[0].trim()}</span> = {card.split(":")[1].trim()}
+                        <span className="bold">{card.split(":")[0].trim().toLowerCase()}</span> = {card.split(":")[1].trim().toLowerCase()}
                     </li>
                 ))}
             </div>

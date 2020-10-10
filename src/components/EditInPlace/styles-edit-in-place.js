@@ -13,7 +13,7 @@ export const ContainerEditInPlace = styled.div`
       display: block;
       width: 100%;
       overflow: hidden;
-      resize: both;
+      /* resize: both; */
       /* min-height: 40px; */
    }
 `;

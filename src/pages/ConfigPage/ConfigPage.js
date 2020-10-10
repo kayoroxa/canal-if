@@ -87,14 +87,14 @@ const ConfigPage = () => {
             {fraseVideo}
             {exemploVideo}
             <header>
-                <MdQueuePlayNext size={50} onClick={() => proximaPage()}/>
+                <MdQueuePlayNext size={28} onClick={() => proximaPage()}/>
                 <VoiceRecorder 
                     dado={voiceAlfaOmega.alfa}
                     setAudios={changerVoiceAlfaOmega.alfa}
                     name="voiceAlfa"
                     size={22}
                 />
-                <MdDiscFull size={50} onClick={() => formatar()}/>
+                <MdDiscFull size={28} onClick={() => formatar()}/>
                 <div>{indexCardConfig +1}/{lenDados}</div>
                 <VoiceRecorder 
                     dado={voiceAlfaOmega.omega}

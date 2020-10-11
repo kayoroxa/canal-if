@@ -31,22 +31,12 @@ const DefinitionScreen = () => {
         else if (e.code === "Escape") {
             voltarInicioPage()
         }
-        else {
-            setIndexDefinition((prev) => prev + 1)
-            // setIndexDefinition((prev) => prev < dados[indexPlay].wordTranslate.split(",").length  ? (
-            //     prev + 1
-            // ) : (
-            //     0
-            // ))
-        }
+        else setIndexDefinition((prev) => prev + 1)
     }
-    
 
     useEffect(() => {
         document.onkeydown = (e) => teclaCLicada(e)
-        console.log("index definition: ", indexDefinition)
-        console.log("len: ", dados[indexPlay].wordTranslate.split(",").length)
-        if (indexDefinition === dados[indexPlay].wordTranslate.split(",").length +1) proximaPage()
+        // if (indexDefinition === dados[indexPlay].wordTranslate.split(",").length +1) proximaPage()
         return () => document.onkeydown = null
     }, [indexDefinition])
 
@@ -57,7 +47,7 @@ const DefinitionScreen = () => {
             quantidadeDeLinhas = {dividir.length}
             quantidadeDefinition = {dados[indexPlay].wordTranslate.split(",").length}
         >
-            <audio src={dados[indexPlay].voiceTranslate} autoPlay/>
+            <audio src={dados[indexPlay].voiceTranslate} autoPlay onEnded={() => proximaPage()}/>
             <div className="frase">
                  {dividir ? dividir.map((element, i) => <React.Fragment key={i}><p>{element}</p></React.Fragment>) : <p>{dados[indexPlay].frase}</p>}
             </div>

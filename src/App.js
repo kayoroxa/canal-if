@@ -24,6 +24,11 @@ function App() {
 
   const {dados} = useDados()
 
+  window.onbeforeunload = () => ""
+
+  // window.onbeforeunload = function () {
+  //     return "";
+  // };
   
   return (
       <>

@@ -46,8 +46,8 @@ const PageAllWordsLearning = () => {
             </div>
 
             <audio
-                src = {process.env.PUBLIC_URL + '/audios/intro.mp3'}
-                // autoPlay
+                src = {process.env.PUBLIC_URL + '/audios/wordsLearning.mp3'}
+                autoPlay
                 onEnded={() => proximaPage()}
             />
         </ContainerPageAllWordsLearning>

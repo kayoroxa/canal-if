@@ -40,13 +40,6 @@ const PronunciationScreen = () => {
 
     const [step, setStep] = useState(0)
 
-    useEffect(() => {
-        if (step >= innerEasy.split("order").length) {
-            audioPronunciaRef.current.play()
-            setVerIcon(true)
-        }
-    }, [step])
-
     const teclou = (e) => {
         if (e.code === "NumpadEnter") {
             proximaPage()
@@ -59,6 +52,13 @@ const PronunciationScreen = () => {
         }
     }
 
+
+    const audioAcabou = () => {
+        audioPronunciaRef.current.play()
+        setVerIcon(true)
+    }
+    
+
     useEffect(() => {
         document.onkeydown = (e) => teclou(e)
         return () => document.onkeydown = null
@@ -70,7 +70,7 @@ const PronunciationScreen = () => {
 
     return (
         <Container indexView={step < 0 ? 0 : step}>
-            <audio src={dados[indexPlay].voicePronuncia} autoPlay/>
+            <audio src={dados[indexPlay].voicePronuncia} autoPlay onEnded={() => audioAcabou()}/>
             <audio ref={audioPronunciaRef} src={dados[indexPlay].urlFrase} onEnded={() => audioPronunciaRef2.current.play()} />
             <audio ref={audioPronunciaRef2} src={dados[indexPlay].urlFrase} onEnded={() => proximaPage()} />
             {/* <audio src={process.env.PUBLIC_URL + '/audios/p' + indexPlay + '.mp3'} autoPlay/> */}

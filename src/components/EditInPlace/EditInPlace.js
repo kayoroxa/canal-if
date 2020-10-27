@@ -10,7 +10,7 @@ const EditInPlace = ({value, onChangeValue}) => {
 
     return (
         <ContainerEditInPlace>
-            <span className='textArea' onBlur={done} contentEditable ref={inputRef}>{value}</span>
+            <span suppressContentEditableWarning={true} className='textArea' onBlur={done} contentEditable ref={inputRef}>{value}</span>
         </ContainerEditInPlace>
     );
 }

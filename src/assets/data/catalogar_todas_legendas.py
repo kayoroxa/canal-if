@@ -1,19 +1,18 @@
 try:
     from playsound import playsound
-    from os import system 
+    from os import system
     from time import sleep
-    nome_movie = input('Nome do Movie html: ')
-    movie = input('Nome do Movie yarn: ')
-    # nome_movie = "Titanic"
-    # movie = "Titanic (1997)"
+    # nome_movie = input('Nome do Movie html: ')
+    # movie = input('Nome do Movie yarn: ')
+    nome_movie = "Lilo & Stitch"
+    movie = "Lilo & Stitch 2: Stitch Has a Glitch"
 
     terminal = int(input("é terminal? "))
 
     destino = 'pyoutiput.js'
-    maximo = 1  #sessao
+    maximo = 1  # sessao
     min = 25
-    max = 45 #words unicas
-
+    max = 45  # words unicas
 
     # try:
     from linkDef import link
@@ -24,7 +23,7 @@ try:
         else:
             with open('words.txt', 'r', encoding="utf-8") as words:
                 words = words.read().split('\n')
-        
+
     except Exception as e:
         input(e)
 
@@ -37,7 +36,6 @@ try:
                 if palavra not in unicas:
                     unicas.append(palavra)
         return unicas
-
 
     def pontos_lista(lista):
 
@@ -52,8 +50,7 @@ try:
                 resultado -= 2000
         return resultado
 
-
-    def pegar_sessoes ():
+    def pegar_sessoes():
         if terminal == 0:
             pasta = "src/assets/data/todas legendas/"  # input
         else:
@@ -69,8 +66,10 @@ try:
             # segundos = int(x[-2:])
             # minutos = int(x[3:5])
             # hora = int(x[:2])
-            comeco_dessa = int(comeco_dessa[-2:]) + (int(comeco_dessa[3:5]) * 60) + (int(comeco_dessa[:2]) * 3600)
-            final_anterior = int(final_anterior[-2:]) + (int(final_anterior[3:5]) * 60) + (int(final_anterior[:2]) * 3600)
+            comeco_dessa = int(
+                comeco_dessa[-2:]) + (int(comeco_dessa[3:5]) * 60) + (int(comeco_dessa[:2]) * 3600)
+            final_anterior = int(
+                final_anterior[-2:]) + (int(final_anterior[3:5]) * 60) + (int(final_anterior[:2]) * 3600)
             # print(comeco_dessa - final_anterior)
 
             tempoPausaMaximo = 13
@@ -78,7 +77,7 @@ try:
             if len(sessao) > 12:
                 tempoPausaMaximo = 6
             if (comeco_dessa - final_anterior) < tempoPausaMaximo:
-                
+
                 return True
             return False
 
@@ -96,8 +95,10 @@ try:
                 #         frase = frase.replace(word, '')
                 # except:
                 #     pass
-            frase = frase.replace('...', ' ').replace('-', ' ').replace('âª', '')
-            return ' '.join(frase.split()).strip()  # remover espaço desnecessario
+            frase = frase.replace('...', ' ').replace(
+                '-', ' ').replace('âª', '')
+            # remover espaço desnecessario
+            return ' '.join(frase.split()).strip()
 
         def catalogar_arquivo(pastaArquivo):
 
@@ -129,7 +130,7 @@ try:
                     # print(frase)
                 if 'subtitles by' in frase:
                     frase = ''
-                elif '[' in frase or ']' in frase or '*' in frase: #ignorar frases q tenham
+                elif '[' in frase or ']' in frase or '*' in frase:  # ignorar frases q tenham
                     frase = ''
                 return frase
 
@@ -157,7 +158,7 @@ try:
                     contador += 1
                     frase = alguns_filtros(frases[-1])
                     frases.pop()
-                    if frase != '': #and frase not in frases:  (mudou aq)
+                    if frase != '':  # and frase not in frases:  (mudou aq)
                         frases.append(frase.strip())
                     elif frase == '' or frase in frases:
                         contador -= 1
@@ -190,7 +191,7 @@ try:
                             sessoes.append([frases[-2]])
                     pode_adicionar = False
 
-                #fazer sequencia
+                # fazer sequencia
                 try:
                     if linha[0] == '0' and linha[2] == ':':
 
@@ -215,16 +216,14 @@ try:
         from caio_uteis import num_there
         arquivos = listdir(pasta)
 
-        if len(arquivos) ==0:
+        if len(arquivos) == 0:
             print("Está sem File Legenda")
 
         for arquivo in arquivos:
             result = catalogar_arquivo(pasta + arquivo)
             return result
 
-
-    def escolher_melhor_sessao (sessoes):
-
+    def escolher_melhor_sessao(sessoes):
 
         def word_unica(lista):
             unicas = []
@@ -245,7 +244,7 @@ try:
         for item in sessoes:
             # print("mS: item:", item)
 
-            item = list(dict.fromkeys(item)) #remove duplicate
+            item = list(dict.fromkeys(item))  # remove duplicate
             tamanho = len(word_unica(item))
             listaDeLen.append(tamanho)
             if max > tamanho > min:
@@ -253,20 +252,19 @@ try:
                 result.append(item)
                 aceitos += 1
             else:
-                recusados +=1
+                recusados += 1
         if aceitos < 5:
             print(statistics.median(listaDeLen))
         print("recusados: ", recusados)
         print("aceitos: ", aceitos)
         return result
 
-    #def link
+    # def link
 
     # try:
     sessoes = pegar_sessoes()
 
     melhores = escolher_melhor_sessao(sessoes)
-
 
     for melhor in melhores:
         print(melhor, '\n')
@@ -275,19 +273,20 @@ try:
 
     print("\n\n")
 
-
     melhorEscolhido = int(input('Qual dialogo você quer? '))
 
     pack = []
-    for i, item in enumerate([melhores[melhorEscolhido -1]]):
+    for i, item in enumerate([melhores[melhorEscolhido - 1]]):
         print("\n\n\nPegando Sessao...")
-        sessao = link(item[0], movie=movie, segundaFrase=item[1], ate=item[-1], atePenultimo=item[-2])
+        sessao = link(item[0], movie=movie, segundaFrase=item[1],
+                      ate=item[-1], atePenultimo=item[-2])
 
         if sessao == False:
             getIndex = 1
             while sessao == False:
                 getIndex += 1
-                sessao = link(item[0], movie=movie, segundaFrase=item[1], ate=item[-1], atePenultimo=item[-2], getIndex= getIndex)
+                sessao = link(item[0], movie=movie, segundaFrase=item[1],
+                              ate=item[-1], atePenultimo=item[-2], getIndex=getIndex)
 
         print("Sessão tamanho", sessao, '\n\n')
 
@@ -301,18 +300,16 @@ try:
                 tituloCard = card[0]
                 exemplo = link(tituloCard, raw=True, getIndex=2)
                 print("exemplo ok", exemplo[0])
-                exemplo = {"url": exemplo[1], "subtitle": exemplo[0], "translation": "sem tradução"}
+                exemplo = {
+                    "url": exemplo[1], "subtitle": exemplo[0], "translation": "sem tradução"}
                 card.append(exemplo)
-
 
         if i >= maximo:
             print("maior que maximo!!!!!!!!!!!")
-            break #Não prestou
-
+            break  # Não prestou
 
         pack.append(sessao)
         break
-
 
         # print("\n")
 
@@ -320,7 +317,6 @@ try:
 
     # from caio_uteis import load_pickle
     # pack = load_pickle("pack")
-
 
     quantidadeDeFrases = 0
     quantidadeDeExemplos = 0
@@ -332,7 +328,6 @@ try:
         for card in sessao:
             quantidadeDeExemplos += 1
             print(card[2]["subtitle"])
-
 
     if terminal == 0:
         playsound("src/assets/data/fim.mp3")
@@ -371,8 +366,8 @@ try:
             card[2]["translation"] = traducao[cont]
             cont += 1
 
-    for sessao in pack: print(sessao)
-
+    for sessao in pack:
+        print(sessao)
 
     try:
         with open(destino, 'w+', encoding="utf-8") as js_file:
@@ -384,7 +379,8 @@ try:
                 for card in sessao:
                     frase = card[0]
                     link = card[1]
-                    link = link.replace("https://getyarn.io/yarn-clip/", "https://y.yarn.co/") + ".mp4"
+                    link = link.replace(
+                        "https://getyarn.io/yarn-clip/", "https://y.yarn.co/") + ".mp4"
                     traducao = card[3]
                     exemplo = card[2]
 

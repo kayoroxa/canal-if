@@ -44,8 +44,8 @@ const AudioScreen = ({ alfaOmega }) => {
           onEnded={() => proximaPage()}
         />
         {alfaOmega === 'alfa' ? <p>apresenta:</p> : ''}
-        <h1 className="bold">Vingadores</h1>
-        {/* <h1 className="bold">{nomeMovie}</h1> */}
+        {/* <h1 className="bold">Vingadores</h1> */}
+        <h1 className="bold">{nomeMovie}</h1>
       </div>
       <video src={dados[indexPlay].urlFrase} autoPlay muted loop></video>
     </Container>

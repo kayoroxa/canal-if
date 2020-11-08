@@ -4,15 +4,20 @@ try:
     from time import sleep
     # nome_movie = input('Nome do Movie html: ')
     # movie = input('Nome do Movie yarn: ')
-    nome_movie = "Lilo & Stitch"
-    movie = "Lilo & Stitch 2: Stitch Has a Glitch"
+    nome_movie = "Esqueceram De Mim"
+    movie = "Home Alone 2: Lost in New York (1992)"
 
     terminal = int(input("é terminal? "))
 
+    personalizadoSearch = [
+        "-He vanished. -l'm down here, you big horse's ass!",
+        "I don't"
+    ]
+
     destino = 'pyoutiput.js'
     maximo = 1  # sessao
-    min = 25
-    max = 45  # words unicas
+    min = 10
+    max = 50  # words unicas
 
     # try:
     from linkDef import link
@@ -221,6 +226,7 @@ try:
 
         for arquivo in arquivos:
             result = catalogar_arquivo(pasta + arquivo)
+            # print(result)
             return result
 
     def escolher_melhor_sessao(sessoes):
@@ -274,9 +280,11 @@ try:
     print("\n\n")
 
     melhorEscolhido = int(input('Qual dialogo você quer? '))
-
+    dialogoEscolhido = melhores[melhorEscolhido - 1]
+    if len(personalizadoSearch) > 1:
+        dialogoEscolhido = personalizadoSearch
     pack = []
-    for i, item in enumerate([melhores[melhorEscolhido - 1]]):
+    for i, item in enumerate([dialogoEscolhido]):
         print("\n\n\nPegando Sessao...")
         sessao = link(item[0], movie=movie, segundaFrase=item[1],
                       ate=item[-1], atePenultimo=item[-2])

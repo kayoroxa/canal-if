@@ -1,2 +1,120 @@
-texto = "COME ON. YOU CAN LICK THIS. YOU'RE A TIGER. LOOK I'LL CARRY YOU. "
-console.log(texto.length)
+;[
+  {
+    urlFrase: 'https://y.yarn.co/1b2278bd-ff5d-487c-830a-03cc98893578.mp4',
+    frase: 'We said we were gonna be good.| I needed you, Stitch.',
+    fraseTranslate:
+      'Dissemos que íamos ser bons.| Eu precisava de você, Stitch.',
+    wordTranslate:
+      'we: nós, said: disse, we: nós, were: eram / estavam, gonna: vai, be: estar / ser, good: boa, i: eu, needed: necessário, you: você, stitch: undefined',
+    voiceTranslate: '',
+    pronuncia: 'we said we wer{e} gonna be good. i needed you, stitch.',
+    voicePronuncia: '',
+    exemploFrase: 'Steve, we said we were gonna be good this year. ',
+    exemploTranslate: 'Steve, dissemos que seríamos bons este ano.',
+    urlExemplo: 'https://y.yarn.co/7db81682-caf2-4815-97d3-7d8affc32ced.mp4',
+  },
+  {
+    urlFrase: 'https://y.yarn.co/2dab9af4-9cd2-4f06-8ce8-e6979f06608c.mp4',
+    frase: "If you promise to be good,| I'll give you one more chance.",
+    fraseTranslate: 'Se você prometer ser bom,| vou lhe dar mais uma chance.',
+    wordTranslate:
+      "if: se, you: você, promise: promessa, to: para, be: estar / ser, good: boa, i'll: eu vou, give: dar, you: você, one: undefined, more: mais, chance: undefined",
+    voiceTranslate: '',
+    pronuncia: "if you promise to be good, i'll give you one more chance.",
+    voicePronuncia: '',
+    exemploFrase: "i'll give you one more chance. ",
+    exemploTranslate: 'vou te dar mais uma chance.',
+    urlExemplo: 'https://y.yarn.co/47ffbedf-3466-4428-9680-6aa87b2ab8bc.mp4',
+  },
+  {
+    urlFrase: 'https://y.yarn.co/23723a2b-26be-481b-8286-fd869e791119.mp4',
+    frase: '- But I want you to promise. |- Oh, yeah.',
+    fraseTranslate: '- Mas eu quero que você prometa. |- Oh sim.',
+    wordTranslate:
+      'but: mas, i: eu, want: quer, you: você, to: para, promise: promessa, oh: undefined, yeah: sim, alien: estrangeiro, language: língua',
+    voiceTranslate: '',
+    pronuncia: '- bu(t i) (want you) to promise. - oh, yeah. (alien language)',
+    voicePronuncia: '',
+    exemploFrase: '[ Alien Language ] Yeah. ',
+    exemploTranslate: '[Língua estrangeira] Sim.',
+    urlExemplo: 'https://y.yarn.co/18e941c2-0376-4625-8196-929b9128ca05.mp4',
+  },
+  {
+    urlFrase: 'https://y.yarn.co/062a5392-d222-44fa-a519-78fdacb30786.mp4',
+    frase: "You get the costumes,| and I'll get the record player.",
+    fraseTranslate: 'Você pega as fantasias| e eu pego o toca-discos.',
+    wordTranslate:
+      "you: você, get: obter / chegar / conseguir, the: a / as / o / os, costumes: undefined, and: e, i'll: eu vou, get: obter / chegar / conseguir, the: a / as / o / os, record: registro, player: undefined",
+    voiceTranslate: '',
+    pronuncia:
+      "you (ge{t} the) costumes, (an{d} i'll) (ge{t} the) record player.",
+    voicePronuncia: '',
+    exemploFrase: "I'll go get the costumes. ",
+    exemploTranslate: 'Vou buscar as fantasias.',
+    urlExemplo: 'https://y.yarn.co/55829578-a779-49ca-8bc4-8693e552e0d2.mp4',
+  },
+  {
+    urlFrase: 'https://y.yarn.co/e6beb6e5-55cd-4028-9455-3d2dcdef7b5b.mp4',
+    frase: 'We are ready.',
+    fraseTranslate: 'Nós estamos prontos.',
+    wordTranslate: 'we: nós, are: ser / está, ready: pronto',
+    voiceTranslate: '',
+    pronuncia: 'we are ready.',
+    voicePronuncia: '',
+    exemploFrase: 'We are ready. ',
+    exemploTranslate: 'Nós estamos prontos.',
+    urlExemplo: 'https://y.yarn.co/a5bf0344-4265-4e70-bc17-b4b51b1d0901.mp4',
+  },
+  {
+    urlFrase: 'https://y.yarn.co/ffcf4878-f49b-4c12-8572-c56c9d7a63ce.mp4',
+    frase: "- Everything's ruined. |- I... I sorry.",
+    fraseTranslate: '- Está tudo arruinado. |- Eu ... eu sinto muito.',
+    wordTranslate:
+      "everything's: tudo, ruined: arruinado, i: eu, i: eu, sorry: desculpa / sinto muito",
+    voiceTranslate: '',
+    pronuncia: "- everything's ruined. - i... i sorry.",
+    voicePronuncia: '',
+    exemploFrase: "Everything's ruined. ",
+    exemploTranslate: 'Está tudo arruinado.',
+    urlExemplo: 'https://y.yarn.co/226af8e2-5e7d-478f-b835-66938c913ea8.mp4',
+  },
+  {
+    urlFrase: 'https://y.yarn.co/96b9e9b8-f43a-49ba-99c2-8352dcda984e.mp4',
+    frase: "I don't know why I ever believed you.",
+    fraseTranslate: 'Não sei por que |eu sempre acreditei em você.',
+    wordTranslate:
+      "i: eu, don't: não, know: conhecer, why: porque, i: eu, ever: sempre, believed: undefined, you: você",
+    voiceTranslate: '',
+    pronuncia: "i don't (kno{w} why() i) ever believed you.",
+    voicePronuncia: '',
+    exemploFrase: 'Why I ever believed... ',
+    exemploTranslate: 'Por que eu sempre acreditei ...',
+    urlExemplo: 'https://y.yarn.co/4ff2069c-1d5b-434b-adf5-6641a1f2d680.mp4',
+  },
+  {
+    urlFrase: 'https://y.yarn.co/4749914d-0846-43b4-bc3b-93ba50638006.mp4',
+    frase: "I know what's wrong with you.",
+    fraseTranslate: 'Eu sei o que há de errado com você.',
+    wordTranslate:
+      "i: eu, know: conhecer, what's: o que é, wrong: errado, with: com, you: você",
+    voiceTranslate: '',
+    pronuncia: "i (kno{w} what's) wrong with you.",
+    voicePronuncia: '',
+    exemploFrase: "I know what's wrong with you. ",
+    exemploTranslate: 'Eu sei o que há de errado com você.',
+    urlExemplo: 'https://y.yarn.co/4749914d-0846-43b4-bc3b-93ba50638006.mp4',
+  },
+  {
+    urlFrase: 'https://y.yarn.co/db2bde34-5632-4f5d-9b1b-60e9c80ac8ad.mp4',
+    frase: "You're bad, |and you'll always be bad.",
+    fraseTranslate: 'Você é mau |e você vai ser sempre mau.',
+    wordTranslate:
+      "you're: você é / você está, bad: ruim, and: e, you'll: você vai, always: sempre, be: estar / ser, bad: ruim",
+    voiceTranslate: '',
+    pronuncia: "you're bad, (an{d} you'll() always) be bad.",
+    voicePronuncia: '',
+    exemploFrase: "You'll always be a bad person. ",
+    exemploTranslate: 'Você sempre será uma pessoa má.',
+    urlExemplo: 'https://y.yarn.co/07df8844-aa07-473b-92d7-a9fae75d3c64.mp4',
+  },
+][('Oi', 'olá')]

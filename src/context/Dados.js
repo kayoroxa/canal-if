@@ -26,6 +26,7 @@ export default function DadosProvider({ children }) {
     'words-learning',
     'videos-completo-pt',
     'videos-completo-en',
+    // ['translate'],
     ['video-index', 'translate', 'pronunciation', 'exemple'],
     'fim',
   ]
@@ -85,8 +86,8 @@ export default function DadosProvider({ children }) {
 
   const handleDados = dadinhos.map((card, index) => ({
     urlFrase: card[0],
-    frase: card[1],
-    fraseTranslate: card[2],
+    frase: card[1].replaceAll(/\(.*\)|[\w']*\:/gi, '').trim(),
+    fraseTranslate: card[2].replaceAll(/\(.*\)|[\w']*\:/gi, '').trim(),
     wordTranslate: card[1]
       .match(/\w+’\w+|\w+'\w+|\w+/gi)
       .map(

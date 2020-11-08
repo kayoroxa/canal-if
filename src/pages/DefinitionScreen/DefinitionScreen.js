@@ -23,7 +23,9 @@ const DefinitionScreen = () => {
 
   let tamanhoDeCaracteres = recordChair
 
-  const dividir = quebraDeLinha(dados[indexPlay].frase)
+  const frase = dados[indexPlay].frase
+  // const dividir = frase.includes('|') ? frase.split('|') : quebraDeLinha(frase)
+  const dividir = quebraDeLinha(frase.replaceAll('|', ''))
 
   let fim = false
 
@@ -44,11 +46,19 @@ const DefinitionScreen = () => {
     ${process.env.PUBLIC_URL}/audios/audiosVideo/${indexPlay + 1}a.mp3
   `
   //////////////////////////////////////////////////////////////////
-  console.log('index play', indexPlay)
+  const quantidadeDeLetrasLinha = Math.round(600 / dividir[0].length) + 'vw'
+  const quantidadeDeLinhas = Math.round(16 / dividir.length) + 'vw'
+  const quantidadeDefinition =
+    Math.round(30 / dados[indexPlay].wordTranslate.split(',').length) + 'vw'
+
+  console.log('quantidadeDeLetrasLinha', quantidadeDeLetrasLinha)
+  console.log('quantidadeDeLinhas', quantidadeDeLinhas)
+  console.log('quantidadeDefinition', quantidadeDefinition)
   return (
     <Container
       quantidadeDeLinhas={dividir.length}
       quantidadeDefinition={dados[indexPlay].wordTranslate.split(',').length}
+      quantidadeDeLetrasLinha={dividir[0].length}
     >
       <audio
         src={

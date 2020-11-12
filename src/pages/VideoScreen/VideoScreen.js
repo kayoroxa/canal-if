@@ -15,6 +15,11 @@ const VideoScreen = ({ qualTextoMostrar, reproduzirTodos }) => {
     voltarInicioPage,
   } = useDados()
 
+  useEffect(() => {
+    if (!dados[indexPlay].showExemplo && qualTextoMostrar === 'exemplo')
+      proximaPage()
+  }, [])
+
   const [isPlaying, setIsPlaying] = useState(true)
   const [canPlay, setCanPlay] = useState(
     qualTextoMostrar !== 'exemplo' && !reproduzirTodos ? true : false
@@ -39,51 +44,61 @@ const VideoScreen = ({ qualTextoMostrar, reproduzirTodos }) => {
     return () => (document.onkeydown = null)
   }, [])
 
+  const mostrar =
+    qualTextoMostrar !== 'exemplo' ||
+    (qualTextoMostrar === 'exemplo' && dados[indexPlay].showExemplo)
+      ? true
+      : false
+
   return (
-    <Container>
-      {qualTextoMostrar !== 'exemplo' && !reproduzirTodos ? (
-        ''
-      ) : (
-        <audio
-          src={process.env.PUBLIC_URL + '/audios/' + qualTextoMostrar + '.mp3'}
-          autoPlay={true}
-          onEnded={() => setCanPlay(true)}
-        />
-      )}
-      {qualTextoMostrar === 'exemplo' ? (
-        <div className="logo-exemple ">
-          <p className="bold">Exemplo</p>
-        </div>
-      ) : (
-        ''
-      )}
-      <Main>
-        <Top>
-          <VideoPlayer
-            qualTextoMostrar={qualTextoMostrar}
-            reproduzirTodos={reproduzirTodos}
-            indexPlay={indexPlay}
-            setIndexPlay={setIndexPlay}
-            setIsPlaying={setIsPlaying}
-            canPlay={canPlay}
-            setCanPlay={setCanPlay}
+    mostrar && (
+      <Container>
+        {qualTextoMostrar !== 'exemplo' && !reproduzirTodos ? (
+          ''
+        ) : (
+          <audio
+            src={
+              process.env.PUBLIC_URL + '/audios/' + qualTextoMostrar + '.mp3'
+            }
+            autoPlay={true}
+            onEnded={() => setCanPlay(true)}
           />
-          <div
-            className="logo bold"
-            style={!isPlaying ? { display: 'none' } : null}
-          >
-            INGLESFLIX
+        )}
+        {qualTextoMostrar === 'exemplo' ? (
+          <div className="logo-exemple ">
+            <p className="bold">Exemplo</p>
           </div>
-        </Top>
-        <Button style={canPlay ? { opacity: 1 } : { opacity: 0 }}>
-          <SubtitlePlayer
-            reproduzirTodos={reproduzirTodos}
-            qualTextoMostrar={qualTextoMostrar}
-            state={[indexPlay, setIndexPlay]}
-          />
-        </Button>
-      </Main>
-    </Container>
+        ) : (
+          ''
+        )}
+        <Main>
+          <Top>
+            <VideoPlayer
+              qualTextoMostrar={qualTextoMostrar}
+              reproduzirTodos={reproduzirTodos}
+              indexPlay={indexPlay}
+              setIndexPlay={setIndexPlay}
+              setIsPlaying={setIsPlaying}
+              canPlay={canPlay}
+              setCanPlay={setCanPlay}
+            />
+            <div
+              className="logo bold"
+              style={!isPlaying ? { display: 'none' } : null}
+            >
+              INGLESFLIX
+            </div>
+          </Top>
+          <Button style={canPlay ? { opacity: 1 } : { opacity: 0 }}>
+            <SubtitlePlayer
+              reproduzirTodos={reproduzirTodos}
+              qualTextoMostrar={qualTextoMostrar}
+              state={[indexPlay, setIndexPlay]}
+            />
+          </Button>
+        </Main>
+      </Container>
+    )
   )
 }
 

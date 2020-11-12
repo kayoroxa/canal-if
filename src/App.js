@@ -55,6 +55,12 @@ function App() {
           path="/videos-completo-en"
           element={<VideoScreen reproduzirTodos={true} qualTextoMostrar="en" />}
         />
+        <Route
+          path="/videos-completo-pt-en"
+          element={
+            <VideoScreen reproduzirTodos={true} qualTextoMostrar="pt-en" />
+          }
+        />
         <Route path="/fim" element={<AudioScreen alfaOmega="omega" />} />
         <Route path="/audio" element={<AudioScreen alfaOmega="alfa" />} />
         <Route

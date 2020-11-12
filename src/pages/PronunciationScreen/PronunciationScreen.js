@@ -7,6 +7,11 @@ import { GiSpeaker } from 'react-icons/gi'
 
 const PronunciationScreen = () => {
   const { proximaPage, dados, indexPlay, voltarInicioPage } = useDados()
+
+  useEffect(() => {
+    if (!dados[indexPlay].showPronuncia) proximaPage()
+  }, [])
+
   const [verIcon, setVerIcon] = useState(false)
   let innerEasy = (() => {
     if (!dados[indexPlay]) return ''
@@ -65,38 +70,40 @@ const PronunciationScreen = () => {
     ${process.env.PUBLIC_URL}/audios/audiosVideo/${indexPlay + 1}b.mp3
   `
   return (
-    <Container indexView={step < 0 ? 0 : step}>
-      <audio
-        src={
-          caminhoAudioExterno
-            ? caminhoAudioExterno
-            : dados[indexPlay].voicePronuncia
-        }
-        autoPlay
-        onEnded={() => audioAcabou()}
-      />
+    dados[indexPlay].showPronuncia && (
+      <Container indexView={step < 0 ? 0 : step}>
+        <audio
+          src={
+            caminhoAudioExterno
+              ? caminhoAudioExterno
+              : dados[indexPlay].voicePronuncia
+          }
+          autoPlay
+          onEnded={() => audioAcabou()}
+        />
 
-      <audio
-        ref={audioPronunciaRef}
-        src={dados[indexPlay].urlFrase}
-        onEnded={() => audioPronunciaRef2.current.play()}
-      />
-      <audio
-        ref={audioPronunciaRef2}
-        src={dados[indexPlay].urlFrase}
-        onEnded={() => proximaPage()}
-      />
-      {/* <audio src={process.env.PUBLIC_URL + '/audios/p' + indexPlay + '.mp3'} autoPlay/> */}
-      <div className="main">
-        <p dangerouslySetInnerHTML={{ __html: innerEasy }} />
-      </div>
-      <GiSpeaker
-        ref={speakRef}
-        size={150}
-        fill="orange"
-        style={verIcon ? { opacity: '1' } : { opacity: '0' }}
-      />
-    </Container>
+        <audio
+          ref={audioPronunciaRef}
+          src={dados[indexPlay].urlFrase}
+          onEnded={() => audioPronunciaRef2.current.play()}
+        />
+        <audio
+          ref={audioPronunciaRef2}
+          src={dados[indexPlay].urlFrase}
+          onEnded={() => proximaPage()}
+        />
+        {/* <audio src={process.env.PUBLIC_URL + '/audios/p' + indexPlay + '.mp3'} autoPlay/> */}
+        <div className="main">
+          <p dangerouslySetInnerHTML={{ __html: innerEasy }} />
+        </div>
+        <GiSpeaker
+          ref={speakRef}
+          size={150}
+          fill="orange"
+          style={verIcon ? { opacity: '1' } : { opacity: '0' }}
+        />
+      </Container>
+    )
   )
 }
 

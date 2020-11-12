@@ -17,6 +17,10 @@ const DefinitionScreen = () => {
     voltarInicioPage,
   } = useDados()
 
+  useEffect(() => {
+    if (!dados[indexPlay].showDefinition) proximaPage()
+  }, [])
+
   const [mostrarProximoCard, setMostrarProximoCard] = useState(false)
 
   const temMaisCard = indexPlay < Object.keys(dados).length - 1 ? true : false
@@ -55,45 +59,47 @@ const DefinitionScreen = () => {
   console.log('quantidadeDeLinhas', quantidadeDeLinhas)
   console.log('quantidadeDefinition', quantidadeDefinition)
   return (
-    <Container
-      quantidadeDeLinhas={dividir.length}
-      quantidadeDefinition={dados[indexPlay].wordTranslate.split(',').length}
-      quantidadeDeLetrasLinha={dividir[0].length}
-    >
-      <audio
-        src={
-          caminhoAudioExterno
-            ? caminhoAudioExterno
-            : dados[indexPlay].voiceTranslate
-        }
-        autoPlay
-        onEnded={() => proximaPage()}
-      />
-      <div className="frase">
-        {dividir ? (
-          dividir.map((element, i) => (
-            <React.Fragment key={i}>
-              <p>{element}</p>
-            </React.Fragment>
-          ))
-        ) : (
-          <p>{dados[indexPlay].frase}</p>
-        )}
-      </div>
-      <div className="definition">
-        {dados[indexPlay].wordTranslate.split(',').map((card, index) => (
-          <li
-            key={index}
-            style={index < indexDefinition ? null : { opacity: 0 }}
-          >
-            <span className="bold">
-              {card.split(':')[0].trim().toLowerCase()}
-            </span>{' '}
-            = {card.split(':')[1].trim().toLowerCase()}
-          </li>
-        ))}
-      </div>
-    </Container>
+    dados[indexPlay].showDefinition && (
+      <Container
+        quantidadeDeLinhas={dividir.length}
+        quantidadeDefinition={dados[indexPlay].wordTranslate.split(',').length}
+        quantidadeDeLetrasLinha={dividir[0].length}
+      >
+        <audio
+          src={
+            caminhoAudioExterno
+              ? caminhoAudioExterno
+              : dados[indexPlay].voiceTranslate
+          }
+          autoPlay
+          onEnded={() => proximaPage()}
+        />
+        <div className="frase">
+          {dividir ? (
+            dividir.map((element, i) => (
+              <React.Fragment key={i}>
+                <p>{element}</p>
+              </React.Fragment>
+            ))
+          ) : (
+            <p>{dados[indexPlay].frase}</p>
+          )}
+        </div>
+        <div className="definition">
+          {dados[indexPlay].wordTranslate.split(',').map((card, index) => (
+            <li
+              key={index}
+              style={index < indexDefinition ? null : { opacity: 0 }}
+            >
+              <span className="bold">
+                {card.split(':')[0].trim().toLowerCase()}
+              </span>{' '}
+              = {card.split(':')[1].trim().toLowerCase()}
+            </li>
+          ))}
+        </div>
+      </Container>
+    )
   )
 }
 

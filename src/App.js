@@ -9,6 +9,7 @@ import PronunciationScreen from './pages/PronunciationScreen'
 import PageAllWordsLearning from './pages/PageAllWordsLearning'
 import ConfigPage from './pages/ConfigPage'
 import TestRecorder from './pages/TestRecorder'
+import VideoPage from './pages/VideoPage'
 
 function App() {
   // const { indexPlay, setIndexPlay } = useDados()
@@ -17,7 +18,7 @@ function App() {
   // const [pageInicial, setPageInicial] = useState(true)
   // const [qualTextoMostrar, setQualTextoMostrar] = useState(cronograma[0])
 
-  const { dados } = useDados()
+  const { dados, indexPlay } = useDados()
 
   window.onbeforeunload = () => ''
 
@@ -25,10 +26,39 @@ function App() {
   //     return "";
   // };
 
+  const sessionVideo = {
+    allVideos: () =>
+      dados.map(card => ({
+        urlFrase: card.urlFrase,
+        subtitle: { en: card.frase, pt: card.fraseTranslate },
+      })),
+    exemplo: () => [
+      {
+        urlFrase: dados[indexPlay].urlExemplo,
+        subtitle: {
+          en: dados[indexPlay].exemploFrase,
+          pt: dados[indexPlay].exemploTranslate,
+        },
+      },
+    ],
+    onlyCard: pt_or_En => {
+      const retornar = { urlFrase: dados[indexPlay].urlFrase, subtitle: {} }
+      if (pt_or_En === 'en')
+        retornar['subtitle'] = { en: dados[indexPlay].frase }
+      else retornar['subtitle'] = { pt: dados[indexPlay].fraseTranslate }
+      return [retornar]
+    },
+  }
+
   return (
     <>
       <GlobalStyles />
       <Routes>
+        <Route path="/" element={<ConfigPage />} />
+        <Route
+          path="/video-page-teste"
+          element={<VideoPage playData={sessionVideo.onlyCard('en')} />}
+        />
         <Route path="/config" element={<ConfigPage />} />
         <Route
           path="/translate"
@@ -55,6 +85,7 @@ function App() {
           path="/videos-completo-en"
           element={<VideoScreen reproduzirTodos={true} qualTextoMostrar="en" />}
         />
+
         <Route
           path="/videos-completo-pt-en"
           element={
@@ -67,7 +98,6 @@ function App() {
           path="/words-learning"
           element={<PageAllWordsLearning alfaOmega="alfa" />}
         />
-        <Route path="/" element={<ConfigPage />} />
         <Route path="/test-recorder" element={<TestRecorder />} />
       </Routes>
     </>

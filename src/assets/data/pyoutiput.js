@@ -9,6 +9,11 @@ export const dadinhos = [
         subtitle: 'What is going on?! What is going on? ',
         translation: 'O que está acontecendo?! O que está acontecendo?',
       },
+      {
+        url: 'https://y.yarn.co/2ee74a7c-2bbc-4b19-8468-214e5c698355.mp4',
+        subtitle: 'No more pencils, no more books.',
+        translation: 'O que está acontecendo?! O que está acontecendo?',
+      },
     ],
   ],
   [

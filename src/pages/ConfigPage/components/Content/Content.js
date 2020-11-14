@@ -16,50 +16,29 @@ import {
   MdRemoveRedEye,
 } from 'react-icons/md'
 
-const Content = ({ title, playIcon, setShowVideo, hiddenButton, change }) => {
+const Content = ({
+  title,
+  playIcon,
+  setShowVideo,
+  change,
+  changeShow,
+  whatPlay,
+  hiddenButtonShow,
+}) => {
   const { dados, changerDados, indexCardConfig } = useDados()
-
-  const whatChange = {
-    exemplo: {
-      show: 'showExemplo',
-      main: 'exemploFrase',
-    },
-    pronunciation: {
-      show: 'showPronuncia',
-      main: 'pronuncia',
-    },
-    definition: {
-      show: 'showDefinition',
-      main: 'wordTranslate',
-    },
-    frase: {
-      show: true,
-      main: 'frase',
-    },
-    fraseTranslate: {
-      show: true,
-      main: 'fraseTranslate',
-    },
-  }
 
   return (
     <ContainerContent
       style={{
-        opacity:
-          whatChange[change].show === true ||
-          dados[indexCardConfig][whatChange[change].show]
-            ? 1
-            : 0.5,
+        opacity: changeShow && !dados[indexCardConfig][changeShow] ? 0.5 : 1,
       }}
     >
       <div className="title">
         {title}
-        {hiddenButton && (
+        {changeShow && !hiddenButtonShow && (
           <MdRemoveRedEye
             onClick={() =>
-              changerDados[indexCardConfig][whatChange[change].show](
-                prev => !prev
-              )
+              changerDados[indexCardConfig][changeShow](prev => !prev)
             }
             size={22}
           />
@@ -68,10 +47,8 @@ const Content = ({ title, playIcon, setShowVideo, hiddenButton, change }) => {
       <div className="line-box exemplo-frase">
         <div className="content">
           <EditInPlace
-            value={dados[indexCardConfig][whatChange[change].main]}
-            onChangeValue={
-              changerDados[indexCardConfig][whatChange[change].main]
-            }
+            value={dados[indexCardConfig][change]}
+            onChangeValue={changerDados[indexCardConfig][change]}
           />
         </div>
         {/* <MdSkipPrevious size={48} />
@@ -81,7 +58,7 @@ const Content = ({ title, playIcon, setShowVideo, hiddenButton, change }) => {
             onClick={() =>
               setShowVideo(prev => ({
                 ...prev,
-                [whatChange[change].main]: true,
+                [whatPlay ? whatPlay : change]: true,
               }))
             }
             size={48}

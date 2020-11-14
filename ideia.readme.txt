@@ -1,0 +1,8 @@
+[
+    {urlVideo:"", legenda: {pt:"", en:""}},
+    {urlVideo:"", legenda: {pt:"", en:""}},
+]
+
+<videoScreen [{url:"", legenda: }, {}]/>
+    <video />
+    <subtitle />

@@ -18,6 +18,7 @@ import EditInPlace from '../../components/EditInPlace'
 import { ContainerConfigPage } from './styles-config-page'
 
 import { useDados } from '../../context/Dados'
+import ContentExemplo from './components/ContentExemplo/ContentExemplo'
 
 const ConfigPage = () => {
   console.log('config')
@@ -132,65 +133,18 @@ const ConfigPage = () => {
           <Content
             setShowVideo={setShowVideo}
             title="Word-translate"
-            change="definition"
-            hiddenButton
+            change="wordTranslate"
+            changeShow="showDefinition"
           />
 
           <Content
             setShowVideo={setShowVideo}
             title="Pronuncia"
-            change="pronunciation"
-            hiddenButton
+            change="pronuncia"
+            changeShow="showPronuncia"
           />
 
-          {/* EXEMPLO */}
-          <div
-            className="title"
-            style={{ opacity: dados[indexCardConfig].showExemplo ? 1 : 0.5 }}
-          >
-            Exemplo-frase
-            <MdRemoveRedEye
-              onClick={() =>
-                changerDados[indexCardConfig].showExemplo(prev => !prev)
-              }
-              size={22}
-            />
-          </div>
-          <div
-            className="line-box exemplo-frase"
-            style={{ opacity: dados[indexCardConfig].showExemplo ? 1 : 0.5 }}
-          >
-            <div className="content">
-              <EditInPlace
-                value={dados[indexCardConfig].exemploFrase}
-                onChangeValue={changerDados[indexCardConfig].exemploFrase}
-              />
-            </div>
-            <MdSkipPrevious size={48} />
-            <MdSkipNext size={48} />
-            <MdPlayArrow
-              onClick={() => setShowVideo(prev => ({ ...prev, exemplo: true }))}
-              size={48}
-            />
-          </div>
-          <div className="title">Exemplo-translate</div>
-          <div className="line-box exemplo-translate">
-            <div className="content">
-              <EditInPlace
-                value={dados[indexCardConfig].exemploTranslate}
-                onChangeValue={changerDados[indexCardConfig].exemploTranslate}
-              />
-            </div>
-          </div>
-          <div className="title">Exemplo Url</div>
-          <div className="line-box exemplo-urlExemplo">
-            <div className="content">
-              <EditInPlace
-                value={dados[indexCardConfig].urlExemplo}
-                onChangeValue={changerDados[indexCardConfig].urlExemplo}
-              />
-            </div>
-          </div>
+          <ContentExemplo setShowVideo={setShowVideo} />
         </div>
         <MdNavigateNext size={100} onClick={proximo} />
       </div>

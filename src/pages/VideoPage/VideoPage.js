@@ -5,7 +5,7 @@ import Subtitle from './components/Subtitle'
 import Video from './components/Video'
 
 import { useDados } from '../../context/Dados'
-const VideoPage = ({ playData, exemplo }) => {
+const VideoPage = ({ playData, exemplo, onlyEn, onlyPt, setTocarOVideo }) => {
   // [
   //     {urlFrase:"", subtitle: {pt:"", en:""}},
   //     {urlVideo:"", subtitle: {pt:"", en:""}},
@@ -14,37 +14,77 @@ const VideoPage = ({ playData, exemplo }) => {
   const { proximaPage } = useDados()
 
   const [indexPlayData, setIndexPlayData] = useState(0)
+  const [indexExemploInCard, setIndexExemploInCard] = useState(0)
 
   const handleVideoEnded = () => {
-    if (indexPlayData < playData.length - 1) {
+    if (playData.length === 0) {
+      proximaPage()
+    } else if (indexPlayData < playData.length - 1) {
       setIndexPlayData(prev => prev + 1)
-    } else proximaPage()
+    } else if (!exemplo) {
+      setIndexPlayData(0)
+      proximaPage()
+    } else {
+      if (indexExemploInCard < playData[indexPlayData].length - 1)
+        setIndexExemploInCard(prev => prev + 1)
+      else {
+        setIndexExemploInCard(0)
+        proximaPage()
+      }
+    }
   }
   const videoRef = useRef(null)
+
   useEffect(() => {
-    videoRef.current.play()
+    try {
+      videoRef.current.play()
+    } catch (error) {
+      setIndexPlayData(0)
+      setIndexExemploInCard(0)
+      proximaPage()
+    }
+
+    // videoRef !== null && setTocarOVideo('00')
   }, [indexPlayData])
 
+  window.playData = playData
   return (
-    <ContainerVideoPage>
-      {exemplo && <div className="exemplo-mark bold">EXEMPLO</div>}
-      <div className="logo bold">InglêsFlix</div>
-      <_BoxVideo>
-        {playData.map((card, index) => (
-          <video
-            key={index}
-            poster=""
-            ref={index === indexPlayData ? videoRef : null}
-            src={card.urlFrase}
-            style={index !== indexPlayData ? { display: 'none' } : null}
-            onEnded={() => handleVideoEnded()}
-            preload="auto"
-            //   onPlaying={() => setIsPlaying(true)}
+    playData.length > 0 && (
+      <ContainerVideoPage>
+        {exemplo && <div className="exemplo-mark bold">EXEMPLO</div>}
+        <div className="logo bold">InglêsFlix</div>
+        <_BoxVideo>
+          {playData.map((card, index) => (
+            <video
+              key={index}
+              poster=""
+              ref={index === indexPlayData ? videoRef : null}
+              src={!exemplo ? card.urlFrase : card[indexExemploInCard].urlFrase}
+              style={index !== indexPlayData ? { display: 'none' } : null}
+              onEnded={() => handleVideoEnded()}
+              preload="auto"
+              //   onPlaying={() => setIsPlaying(true)}
+            />
+          ))}
+        </_BoxVideo>
+        {!exemplo && (
+          <Subtitle
+            pt={!onlyEn && playData[indexPlayData].subtitle.pt}
+            en={!onlyPt && playData[indexPlayData].subtitle.en}
           />
-        ))}
-      </_BoxVideo>
-      <Subtitle subtitleData={playData[indexPlayData].subtitle} />
-    </ContainerVideoPage>
+        )}
+        {exemplo && (
+          <Subtitle
+            pt={
+              !onlyEn && playData[indexPlayData][indexExemploInCard].subtitle.pt
+            }
+            en={
+              !onlyPt && playData[indexPlayData][indexExemploInCard].subtitle.en
+            }
+          />
+        )}
+      </ContainerVideoPage>
+    )
   )
 }
 

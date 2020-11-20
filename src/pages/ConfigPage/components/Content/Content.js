@@ -24,21 +24,51 @@ const Content = ({
   changeShow,
   whatPlay,
   hiddenButtonShow,
+  index,
+  clickInPlay,
+  exemplo,
 }) => {
-  const { dados, changerDados, indexCardConfig } = useDados()
+  // const index = 0
 
+  const toggleExemploIndexShow = exemplosArray => {
+    console.log(exemplosArray)
+    exemplosArray = { ...exemplosArray }
+    exemplosArray[1].showExemplo = !exemplosArray[1].showExemplo
+    exemplosArray = Object.values(exemplosArray)
+    console.log(exemplosArray)
+    return exemplosArray
+  }
+
+  const { dados, changerDados, indexCardConfig } = useDados()
+  window.changer = changerDados[indexCardConfig]
   return (
     <ContainerContent
-      style={{
-        opacity: changeShow && !dados[indexCardConfig][changeShow] ? 0.5 : 1,
-      }}
+      style={
+        !exemplo
+          ? {
+              opacity:
+                changeShow && !dados[indexCardConfig][changeShow] ? 0.5 : 1,
+            }
+          : {
+              opacity: !dados[indexCardConfig]['showExemplos'][index] ? 0.5 : 1,
+            }
+      }
     >
       <div className="title">
         {title}
         {changeShow && !hiddenButtonShow && (
           <MdRemoveRedEye
-            onClick={() =>
-              changerDados[indexCardConfig][changeShow](prev => !prev)
+            onClick={
+              () =>
+                !exemplo
+                  ? changerDados[indexCardConfig][changeShow](prev => !prev)
+                  : changerDados[indexCardConfig]['showExemplos'](prev => ({
+                      ...prev,
+                      [index]: !prev[index],
+                    }))
+              // : changerDados[indexCardConfig]['exemplos'][index][changeShow](
+              //     prev => !prev
+              //   )
             }
             size={22}
           />
@@ -47,8 +77,17 @@ const Content = ({
       <div className="line-box exemplo-frase">
         <div className="content">
           <EditInPlace
-            value={dados[indexCardConfig][change]}
-            onChangeValue={changerDados[indexCardConfig][change]}
+            value={
+              exemplo
+                ? dados[indexCardConfig]['exemplos'][index][change]
+                : dados[indexCardConfig][change]
+            }
+            onChangeValue={
+              !exemplo
+                ? changerDados[indexCardConfig][change]
+                : changerDados[indexCardConfig][change]
+              // : changerDados[indexCardConfig]['exemplos'][0][change]
+            }
           />
         </div>
         {/* <MdSkipPrevious size={48} />
@@ -56,11 +95,18 @@ const Content = ({
         {playIcon && (
           <MdPlayArrow
             onClick={() =>
-              setShowVideo(prev => ({
-                ...prev,
-                [whatPlay ? whatPlay : change]: true,
-              }))
+              clickInPlay(
+                !exemplo
+                  ? dados[indexCardConfig]['urlFrase']
+                  : dados[indexCardConfig]['exemplos'][index]['urlExemplo']
+              )
             }
+            // onClick={() =>
+            //   setShowVideo(prev => ({
+            //     ...prev,
+            //     [whatPlay ? whatPlay : change]: true,
+            //   }))
+            // }
             size={48}
           />
         )}

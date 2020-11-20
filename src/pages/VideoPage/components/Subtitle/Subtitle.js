@@ -2,14 +2,16 @@ import React from 'react'
 
 import { ContainerSubtitle } from './styles-subtitle'
 
-const Subtitle = ({ subtitleData }) => {
+const Subtitle = ({ pt, en }) => {
   //{pt:"", en:""}
 
   return (
     <ContainerSubtitle>
-      {Object.values(subtitleData).map((textSubtitle, index) => (
+      {pt && <p>{pt}</p>}
+      {en && <p>{en}</p>}
+      {/* {Object.values(subtitleData).map((textSubtitle, index) => (
         <p key={index}>{textSubtitle}</p>
-      ))}
+      ))} */}
     </ContainerSubtitle>
   )
 }

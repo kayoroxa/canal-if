@@ -22,12 +22,10 @@ export default function DadosProvider({ children }) {
 
   const cronograma = [
     'config',
-    'video-page-teste',
     // 'audio',
     // 'words-learning',
     // 'videos-completo-pt-en',
-    // 'videos-completo-pt',
-    // 'videos-completo-en',
+    'lets-learning',
     // ['video-index', 'translate', 'exemple'],
     ['video-index', 'translate', 'pronunciation', 'exemple'],
     'fim',
@@ -106,10 +104,22 @@ export default function DadosProvider({ children }) {
     // pronuncia: getPronuncia(card[1]),
     pronuncia: getPronunciationDict(card[1]),
     voicePronuncia: [],
-    exemploFrase: card[3][0].subtitle,
-    exemploTranslate: card[3][0].translation,
-    urlExemplo: card[3][0].url,
-    showExemplo: false,
+    exemplos: {
+      0: {
+        exemploFrase: card[3][0].subtitle,
+        exemploTranslate: card[3][0].translation,
+        urlExemplo: card[3][0].url,
+        showExemplo: false,
+      },
+      1: {
+        exemploFrase: 'oi',
+        exemploTranslate: 'translation oi',
+        urlExemplo:
+          'https://y.yarn.co/968da1a1-013a-40e5-9412-2d782fec7fe2.mp4',
+        showExemplos: false,
+      },
+    },
+    showExemplos: { 0: false, 1: false },
     showPronuncia: false,
     showDefinition: false,
   }))
@@ -140,10 +150,10 @@ export default function DadosProvider({ children }) {
 
   useEffect(() => {
     localStorage.setItem('dados', JSON.stringify(dados))
+    console.log(dados)
   }, [dados])
 
   const changerDados = (() => {
-    console.log(dados)
     const subChanger = (name, index) => value => {
       if (typeof value === 'function') {
         // const newValue = value(dados)

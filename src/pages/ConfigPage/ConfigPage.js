@@ -57,8 +57,10 @@ const ConfigPage = () => {
     <video
       ref={fraseVideoRef}
       src={dados[indexCardConfig].urlFrase}
-      style={showVideo.frase ? { position: 'absolute' } : { display: 'none' }}
-      onEnded={() => setShowVideo(prev => ({ ...prev, frase: false }))}
+      style={{ display: 'none', zIndex: 2 }}
+      // style={showVideo.frase ? { position: 'absolute' } : { display: 'none' }}
+      onEnded={() => (fraseVideoRef.current.style.display = 'none')}
+      // onEnded={() => setShowVideo(prev => ({ ...prev, frase: false }))}
       preload="auto"
     />
   )
@@ -83,6 +85,14 @@ const ConfigPage = () => {
       proximaPage()
     }
   }
+
+  const clickInPlay = url => {
+    fraseVideoRef.current.style.display = ''
+    fraseVideoRef.current.src = url
+    fraseVideoRef.current.play()
+  }
+
+  window.clickInPlay = clickInPlay
 
   useEffect(() => {
     document.onkeydown = e => teclou(e)
@@ -122,6 +132,7 @@ const ConfigPage = () => {
             title="Frase"
             change="frase"
             playIcon
+            clickInPlay={url => clickInPlay(url)}
           />
 
           <Content
@@ -144,7 +155,11 @@ const ConfigPage = () => {
             changeShow="showPronuncia"
           />
 
-          <ContentExemplo setShowVideo={setShowVideo} />
+          <ContentExemplo
+            index={0}
+            setShowVideo={setShowVideo}
+            clickInPlay={url => clickInPlay(url)}
+          />
         </div>
         <MdNavigateNext size={100} onClick={proximo} />
       </div>

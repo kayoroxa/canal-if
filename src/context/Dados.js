@@ -22,9 +22,9 @@ export default function DadosProvider({ children }) {
 
   const cronograma = [
     'config',
-    // 'audio',
-    // 'words-learning',
-    // 'videos-completo-pt-en',
+    'audio',
+    'words-learning',
+    'videos-completo-pt-en',
     'lets-learning',
     // ['video-index', 'translate', 'exemple'],
     ['video-index', 'translate', 'pronunciation', 'exemple'],
